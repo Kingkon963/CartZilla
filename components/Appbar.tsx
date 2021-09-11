@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SearchBox from "./SearchBox";
@@ -187,7 +187,9 @@ const Cart: FC<{ cartItems: CartItemType[] }> = ({ cartItems }) => {
   );
 };
 
-const Appbar: FC = () => {
+const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
+  setNavOpen,
+}) => {
   return (
     <div className="xl:px-container px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between shadow-sm xl:shadow-none select-none w-screen text-gray-500">
       <div className="w-36 self-center hidden xl:block">
@@ -212,7 +214,14 @@ const Appbar: FC = () => {
         <SearchBox />
       </div>
 
-      <div className="xl:hidden ml-auto px-3 flex justify-center items-center">
+      <div
+        className="xl:hidden ml-auto px-3 flex justify-center items-center"
+        onClick={() =>
+          setNavOpen((prev) => {
+            return !prev;
+          })
+        }
+      >
         {menuIcon}
       </div>
 

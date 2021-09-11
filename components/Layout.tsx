@@ -1,15 +1,16 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import tailwind from "../tailwind.config";
 import Appbar from "./Appbar";
 import Topbar from "./Topbar";
 import Navbar from "./Navbar";
 
-const Layout: React.FC = () => {
+const Layout: FC = () => {
+  const [navOpen, setNavOpen] = useState(false);
   return (
     <div className="flex flex-col flex-wrap">
       <Topbar />
-      <Appbar />
-      <Navbar />
+      <Appbar setNavOpen={setNavOpen} />
+      <Navbar navOpen={navOpen} setNavOpen={setNavOpen} />
     </div>
   );
 };

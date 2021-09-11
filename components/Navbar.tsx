@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
 import Image from "next/image";
 import Departments from "../data/navbar";
 import styles from "../styles/Navbar.module.scss";
@@ -85,7 +85,7 @@ const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
 };
 
 const DeptMenu: FC = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <div
@@ -109,9 +109,16 @@ const DeptMenu: FC = () => {
   );
 };
 
-const Navbar: FC = () => {
+const Navbar: FC<{
+  navOpen: boolean;
+  setNavOpen: Dispatch<SetStateAction<boolean>>;
+}> = ({ navOpen }) => {
   return (
-    <nav className="px-container border py-4">
+    <nav
+      className={`xl:px-container border py-4 duration-500 ${
+        navOpen ? "block h-auto" : "hidden h-0"
+      } xl:block xl:h-auto`}
+    >
       <DeptMenu />
     </nav>
   );
