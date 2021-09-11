@@ -1,15 +1,5 @@
-import React, {
-  useState,
-  FC,
-  useEffect,
-  RefObject,
-  useRef,
-  SyntheticEvent,
-  ReactChild,
-} from "react";
+import React, { useState, FC, useEffect, RefObject, useRef } from "react";
 import Image from "next/image";
-import tailwind from "../tailwind.config";
-import styles from "../styles/Topbar.module.scss";
 
 function useOutsideAlerter(ref: RefObject<HTMLDivElement>, callback: Function) {
   useEffect(() => {
@@ -55,7 +45,7 @@ const Selector: React.FC<SelectorProps> = ({ children, title }) => {
   return (
     <div className="text-sm relative" ref={root}>
       <span
-        className={`cursor-pointer hover:text-white duration-300  flex gap-1 items-center ${styles.caret}`}
+        className={`cursor-pointer hover:text-white duration-300  flex gap-1 items-center caret`}
         onClick={() => setOpen(!open)}
       >
         {title}

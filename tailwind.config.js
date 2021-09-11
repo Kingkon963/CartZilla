@@ -9,6 +9,8 @@ module.exports = {
       },
       spacing: {
         container: "20.5rem",
+        menu: "25rem",
+        sidebar: "35rem",
       },
     },
   },
@@ -16,6 +18,7 @@ module.exports = {
     extend: {
       ringWidth: ["focus", "hover", "active"],
       padding: ["hover"],
+      borderWidth: ["last"],
     },
   },
   plugins: [],
