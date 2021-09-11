@@ -27,20 +27,27 @@ const personIcon = (
   </svg>
 );
 
-const cartIcon = (
-  <div className="rounded-full p-3 flex items-center justify-center bg-gray-200">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="currentColor"
-      viewBox="0 0 16 16"
+const CartIcon: FC<{ badge: number }> = ({ badge }) => {
+  return (
+    <div
+      className="rounded-full p-3 flex items-center justify-center relative
+   bg-gray-200"
     >
-      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-    </svg>
-  </div>
-);
-
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </svg>
+      <span className="absolute top-0 right-0 bg-primary text-white rounded-full w-4 h-4 text-xs flex justify-center items-center">
+        {badge}
+      </span>
+    </div>
+  );
+};
 const cartItems = [
   {
     name: "Bluetooth Headphones",
@@ -62,7 +69,7 @@ const cartItems = [
   },
   {
     name: "Android Smart TV",
-    price: 259.0,
+    price: 259,
     quantity: 2,
     picture: "https://cartzilla.createx.studio/img/shop/cart/widget/08.jpg",
   },
@@ -135,7 +142,7 @@ const CartItem: FC<{ item: typeof cartItems[0] }> = ({ item }) => {
 
 type CartItemType = typeof cartItems[0];
 
-const Cart: FC = () => {
+const Cart: FC<{ cartItems: CartItemType[] }> = ({ cartItems }) => {
   const [open, setOpen] = useState<boolean>(true);
 
   let subTotal = 0;
@@ -147,7 +154,7 @@ const Cart: FC = () => {
       className="relative"
     >
       <div className="flex items-center gap-2 ml-3 cursor-pointer caret">
-        {cartIcon}
+        <CartIcon badge={cartItems.length} />
         <div className="flex flex-col">
           <span className="text-xs text-gray-400">My Cart</span>
           <span className="text-base leading-none">${subTotal.toFixed(2)}</span>
@@ -262,7 +269,7 @@ const Appbar: FC = () => {
         </Link>
       </div>
 
-      <Cart />
+      <Cart cartItems={cartItems} />
     </div>
   );
 };
