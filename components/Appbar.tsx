@@ -27,27 +27,21 @@ const personIcon = (
   </svg>
 );
 
-const CartIcon: FC<{ badge: number }> = ({ badge }) => {
-  return (
-    <div
-      className="rounded-full p-3 flex items-center justify-center relative
-   bg-gray-200"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-      >
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-      </svg>
-      <span className="absolute top-0 right-0 bg-primary text-white rounded-full w-4 h-4 text-xs flex justify-center items-center">
-        {badge}
-      </span>
-    </div>
-  );
-};
+const menuIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="currentColor"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fillRule="evenodd"
+      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+    />
+  </svg>
+);
+
 const cartItems = [
   {
     name: "Bluetooth Headphones",
@@ -88,6 +82,28 @@ const Price: FC<{ price: number }> = ({ price }) => {
         </span>
       </span>
     </>
+  );
+};
+
+const CartIcon: FC<{ badge: number }> = ({ badge }) => {
+  return (
+    <div
+      className="rounded-full p-3 flex items-center justify-center relative
+   bg-gray-100"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </svg>
+      <span className="absolute top-0 right-0 bg-primary text-white rounded-full w-4 h-4 text-xs flex justify-center items-center">
+        {badge}
+      </span>
+    </div>
   );
 };
 
@@ -143,7 +159,7 @@ const CartItem: FC<{ item: typeof cartItems[0] }> = ({ item }) => {
 type CartItemType = typeof cartItems[0];
 
 const Cart: FC<{ cartItems: CartItemType[] }> = ({ cartItems }) => {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   let subTotal = 0;
   cartItems.forEach((item) => (subTotal += item.price));
@@ -155,13 +171,13 @@ const Cart: FC<{ cartItems: CartItemType[] }> = ({ cartItems }) => {
     >
       <div className="flex items-center gap-2 ml-3 cursor-pointer caret">
         <CartIcon badge={cartItems.length} />
-        <div className="flex flex-col">
+        <div className="xl:flex hidden flex-col">
           <span className="text-xs text-gray-400">My Cart</span>
           <span className="text-base leading-none">${subTotal.toFixed(2)}</span>
         </div>
       </div>
       {open && (
-        <div className="absolute bottom-100 right-0 h-96 w-80 p-3 shadow-lg">
+        <div className="absolute bottom-100 right-0 h-96 w-80 p-3 shadow-lg z-10 bg-white">
           <div className="flex flex-col gap-3 overflow-y-scroll h-4/6">
             {cartItems.map((item) => {
               return <CartItem item={item} key={item.name} />;
@@ -243,8 +259,8 @@ const SearchBox: FC = () => {
 
 const Appbar: FC = () => {
   return (
-    <div className="px-container py-4 flex gap-3 items-stretch select-none">
-      <div className="w-36 self-center">
+    <div className="xl:px-container px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between shadow-sm xl:shadow-none select-none w-screen text-gray-500">
+      <div className="w-36 self-center hidden xl:block">
         <Image
           src="/images/logo-dark.png"
           width="284"
@@ -253,15 +269,28 @@ const Appbar: FC = () => {
           layout="responsive"
         />
       </div>
-      <div className="w-3/5 ml-3 flex">
+      <div className="w-20 xl:w-36 self-center xl:hidden ">
+        <Image
+          src="/images/logo-icon.png"
+          width="148"
+          height="68"
+          alt="logo"
+          layout="responsive"
+        />
+      </div>
+      <div className="w-3/5 ml-3 xl:flex hidden">
         <SearchBox />
+      </div>
+
+      <div className="xl:hidden ml-auto px-3 flex justify-center items-center">
+        {menuIcon}
       </div>
 
       <div className="flex items-center gap-2 ml-3 px-2 cursor-pointer">
         <Link href="#">
           <>
-            {personIcon}
-            <div className="flex flex-col">
+            <span>{personIcon}</span>
+            <div className="xl:flex hidden flex-col">
               <span className="text-xs text-gray-400">Hello, Sign in</span>
               <span className="text-base leading-none">My Account</span>
             </div>

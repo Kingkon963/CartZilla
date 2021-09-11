@@ -5,7 +5,7 @@ import Topbar from "./Topbar";
 
 const Layout: React.FC = () => {
   return (
-    <div>
+    <div className="flex flex-col flex-wrap">
       <Topbar />
       <Appbar />
     </div>
