@@ -13,7 +13,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      ringWidth: ["focus", "hover", "active"],
+      padding: ["hover"],
+    },
   },
   plugins: [],
 };
