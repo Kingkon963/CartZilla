@@ -99,7 +99,7 @@ const DeptMenu: FC = () => {
       </div>
 
       {open && (
-        <div className="relative w-64 h-menu bg-white shadow-lg z-10 p-1 px-0 ">
+        <div className="absolute w-64 h-menu bg-white shadow-lg z-10 p-1 px-0 ">
           {Departments.map((item) => {
             return <DeptMenuItem item={item} key={item.name} />;
           })}
@@ -117,9 +117,10 @@ const Navbar: FC<{
     <nav
       className={`xl:px-container border py-4 duration-500 ${
         navOpen ? "block h-auto" : "hidden h-0"
-      } xl:block xl:h-auto`}
+      } xl:flex xl:h-auto `}
     >
       <DeptMenu />
+      {/* <div>asda</div> */}
     </nav>
   );
 };
