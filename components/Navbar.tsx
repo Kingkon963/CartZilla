@@ -26,19 +26,19 @@ const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
 
   return (
     <div
-      className="flex relative"
+      className="flex border-b last:border-b-0"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <div className="w-64 h-10 text-sm border-b  last:border-b-0">
-        <div className="flex items-center justify-center gap-2 h-10 hover:text-primary duration-300 caret-r cursor-pointer">
-          <span>{item.icon}</span>
-          <span>{item.name}</span>
+      <div className="w-64 h-10 text-sm  ">
+        <div className=" flex items-center justify-start px-5 gap-1 h-10 hover:text-primary duration-300 caret-r cursor-pointer">
+          <span className="w-1/12 ">{item.icon}</span>
+          <span className="w-10/12">{item.name}</span>
         </div>
       </div>
       {open && (
-        <div className="absolute left-full flex">
-          <div className="bg-white w-sidebar h-menu rounded-md rounded-r-none border-r p-4 shadow-md">
+        <div className="absolute top-0 left-full flex">
+          <div className="bg-white w-sidebar h-menu rounded-md rounded-r-none  p-4 shadow-md">
             <div className="flex flex-col flex-wrap gap-12 h-full">
               {item.subcats.map((subcat) => {
                 return (
@@ -99,7 +99,7 @@ const DeptMenu: FC = () => {
       </div>
 
       {open && (
-        <div className="absolute w-64 h-menu bg-white shadow-lg z-10 p-1 px-0 ">
+        <div className="relative w-64 h-menu bg-white shadow-lg z-10 p-1 px-0 ">
           {Departments.map((item) => {
             return <DeptMenuItem item={item} key={item.name} />;
           })}

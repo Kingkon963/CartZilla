@@ -9,7 +9,7 @@ module.exports = {
       },
       spacing: {
         container: "20.5rem",
-        menu: "25rem",
+        menu: "26rem",
         sidebar: "35rem",
       },
     },
