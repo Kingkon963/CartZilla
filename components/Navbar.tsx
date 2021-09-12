@@ -11,6 +11,7 @@ import styles from "../styles/Navbar.module.scss";
 import Price from "./Price";
 import SearchBox from "./SearchBox";
 import genKey from "../utils/genKey";
+import useWindowSize from "../hooks/useWindowSize";
 
 type DeptMenuItemType = typeof Departments[0];
 
@@ -37,30 +38,42 @@ const Vr: FC = () => {
 
 const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
   const [open, setOpen] = useState(false);
+  const ws = useWindowSize();
 
   return (
     <div
       className="flex flex-col xl:flex-row border-b last:border-b-0"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        if (ws && ws.width && ws.breakpoints) {
+          if (ws.width > ws.breakpoints.xl) setOpen(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (ws && ws.width && ws.breakpoints) {
+          if (ws.width > ws.breakpoints.xl) setOpen(false);
+        }
+      }}
     >
       <div className="w-64 h-10 text-sm ">
-        <div className="flex items-center justify-start px-5 gap-1 h-10 hover:text-primary duration-300 caret xl:caret-r cursor-pointer">
+        <div
+          className="flex items-center justify-start px-5 gap-1 h-10 hover:text-primary duration-300 caret xl:caret-r cursor-pointer"
+          onClick={() => setOpen(!open)}
+        >
           <span className="w-1/12 ">{item.icon}</span>
           <span className="w-10/12">{item.name}</span>
         </div>
       </div>
       {open && (
         <div className="xl:absolute top-full xl:top-0 xl:left-full flex">
-          <div className="bg-gray-100 xl:bg-white w-sidebar xl:h-menu rounded-md rounded-r-none p-4 pl-10 shadow-md">
+          <div className="bg-gray-100 xl:bg-white xl:w-sidebar xl:h-menu rounded-md rounded-r-none p-4 pl-10 xl:shadow-md">
             <div className="flex flex-col flex-wrap gap-12 xl:h-full">
               {item.subcats.map((subcat) => {
                 return (
-                  <div className="flex flex-col gap-2 w-1/2" key={subcat.title}>
+                  <div className="flex flex-col gap-2 xl:w-1/2" key={genKey()}>
                     <h6 className="font-bold">{subcat.title}</h6>
                     {subcat.urls.map((url) => {
                       return (
-                        <span key={url.label}>
+                        <span key={genKey()}>
                           <a
                             href={url.url}
                             className="hover:text-primary duration-300"
@@ -100,22 +113,37 @@ const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
 
 const DeptMenu: FC = () => {
   const [open, setOpen] = useState(false);
-
+  const ws = useWindowSize();
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        if (ws && ws.width && ws.breakpoints) {
+          if (ws.width > ws.breakpoints.xl) setOpen(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (ws && ws.width && ws.breakpoints) {
+          if (ws.width > ws.breakpoints.xl) setOpen(false);
+        }
+      }}
     >
-      <div className="flex gap-1 xl:gap-2 caret items-center hover:text-primary duration-300 cursor-pointer py-3 xl:py-2 px-2 xl:px-0 bg-gray-100 xl:bg-white">
+      <div
+        className="flex gap-1 xl:gap-2 caret items-center hover:text-primary duration-300 cursor-pointer py-3 xl:py-2 px-2 xl:px-0 bg-gray-100 xl:bg-white"
+        onClick={() => {
+          if (ws && ws.width && ws.breakpoints) {
+            if (ws.width < ws.breakpoints.xl) setOpen(!open);
+          }
+        }}
+      >
         <span>{menuIcon}</span>
         <span>Departments</span>
       </div>
 
       {open && (
-        <div className="absolute w-full xl:w-64 xl:h-menu bg-gray-100 xl:bg-white shadow-lg z-10 p-1 px-0 ">
+        <div className="xl:absolute w-full xl:w-64 xl:h-menu bg-gray-100 xl:bg-white xl:shadow-lg z-10 p-1 px-0 ">
           {Departments.map((item) => {
-            return <DeptMenuItem item={item} key={item.name} />;
+            return <DeptMenuItem item={item} key={genKey()} />;
           })}
         </div>
       )}
@@ -129,21 +157,47 @@ const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
   sideMenu = false,
 }) => {
   const [open, setOpen] = useState(false);
+  const ws = useWindowSize();
 
   useEffect(() => {
     if (!title) setOpen(true);
   }, [title]);
 
+  const wsLessThanXL = () => {
+    if (ws && ws.width && ws.breakpoints) {
+      return ws.width < ws.breakpoints.xl;
+    }
+  };
+
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => {
+        if (ws && ws.width && ws.breakpoints) {
+          if (ws.width >= ws.breakpoints.xl) setOpen(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (ws && ws.width && ws.breakpoints) {
+          if (ws.width >= ws.breakpoints.xl) setOpen(false);
+        }
+      }}
     >
-      {title && <div className="px-4 py-1 w-full cursor-pointer">{title}</div>}
+      {title && (
+        <div
+          className={`px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white ${
+            wsLessThanXL() ? "caret" : ""
+          } `}
+          onClick={() => {
+            if (wsLessThanXL()) setOpen(!open);
+          }}
+        >
+          {title}
+        </div>
+      )}
       {open && (
         <div
-          className={`absolute bg-white z-10 shadow-lg flex flex-col ${
+          className={`xl:absolute bg-white z-10 flex flex-col w-full ${
             sideMenu ? "left-full top-0" : "top-full left-0"
           }`}
         >
@@ -160,12 +214,12 @@ const HomeMenu: FC = () => {
   return (
     <div>
       <Menu title="Home">
-        <div className="flex items-stretch">
-          <div className="h-96">
+        <div className="xl:flex xl:items-stretch">
+          <div className="xl:h-96 xl:shadow-md">
             {Home.map((item) => {
               return (
                 <div
-                  className="w-52 border-b last:border-b-0 py-2 px-4 cursor-pointer bg-white"
+                  className="xl:w-52 border-b last:border-b-0 py-2 px-4 cursor-pointer bg-gray-100 xl:bg-white"
                   key={genKey()}
                   onMouseEnter={() => setImgUrl(item.imgURL)}
                 >
@@ -177,10 +231,13 @@ const HomeMenu: FC = () => {
               );
             })}
           </div>
-          <div>
+          <div className="hidden xl:block">
             {imgUrl && (
               <Menu sideMenu={true}>
-                <div className="w-64 h-96" onMouseLeave={() => setImgUrl(null)}>
+                <div
+                  className="xl:absolute w-64 h-96 xl:shadow-md"
+                  onMouseLeave={() => setImgUrl(null)}
+                >
                   <Image
                     src={imgUrl}
                     alt=""
@@ -213,6 +270,50 @@ const Navbar: FC<{
       <DeptMenu />
       <Vr />
       <HomeMenu />
+      <Menu title="Shop">
+        <div className="py-2 px-4 bg-gray-100">
+          <div className="mb-7">
+            <h6 className="font-semibold mb-3">Shop layouts</h6>
+            <div className="flex flex-col gap-2">
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+            </div>
+          </div>
+          <div className="mb-7">
+            <h6 className="font-semibold mb-3">Marketplace</h6>
+            <div className="flex flex-col gap-2">
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+              <span>
+                <a href="#">Shop Grid - Left Sidebar</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </Menu>
     </nav>
   );
 };
