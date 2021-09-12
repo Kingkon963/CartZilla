@@ -20,7 +20,7 @@ const SearchBox: FC = () => {
   return (
     <>
       <div
-        className={`w-9/12 flex border border-1 rounded-l-lg ${
+        className={` w-full xl:w-9/12 flex border border-1 rounded-lg xl:rounded-r-none ${
           focused ? "border-primary" : ""
         } ring-primary`}
         onFocus={() => setFocused(true)}
@@ -38,7 +38,7 @@ const SearchBox: FC = () => {
       <div
         className={`border ${
           catfocused ? "border-primary" : ""
-        } outline-none flex items-center justify-center w-3/12`}
+        } outline-none hidden xl:flex items-center justify-center w-3/12`}
         onFocus={() => setCatFocused(true)}
         onBlur={() => setCatFocused(false)}
       >

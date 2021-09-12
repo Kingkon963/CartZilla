@@ -3,6 +3,7 @@ import Image from "next/image";
 import Departments from "../data/navbar";
 import styles from "../styles/Navbar.module.scss";
 import Price from "./Price";
+import SearchBox from "./SearchBox";
 
 type DeptMenuItemType = typeof Departments[0];
 
@@ -26,20 +27,20 @@ const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
 
   return (
     <div
-      className="flex border-b last:border-b-0"
+      className="flex flex-col xl:flex-row border-b last:border-b-0"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <div className="w-64 h-10 text-sm  ">
-        <div className=" flex items-center justify-start px-5 gap-1 h-10 hover:text-primary duration-300 caret-r cursor-pointer">
+      <div className="w-64 h-10 text-sm ">
+        <div className="flex items-center justify-start px-5 gap-1 h-10 hover:text-primary duration-300 caret xl:caret-r cursor-pointer">
           <span className="w-1/12 ">{item.icon}</span>
           <span className="w-10/12">{item.name}</span>
         </div>
       </div>
       {open && (
-        <div className="absolute top-0 left-full flex">
-          <div className="bg-white w-sidebar h-menu rounded-md rounded-r-none  p-4 shadow-md">
-            <div className="flex flex-col flex-wrap gap-12 h-full">
+        <div className="xl:absolute top-full xl:top-0 xl:left-full flex">
+          <div className="bg-gray-100 xl:bg-white w-sidebar xl:h-menu rounded-md rounded-r-none p-4 pl-10 shadow-md">
+            <div className="flex flex-col flex-wrap gap-12 xl:h-full">
               {item.subcats.map((subcat) => {
                 return (
                   <div className="flex flex-col gap-2 w-1/2" key={subcat.title}>
@@ -61,7 +62,7 @@ const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
               })}
             </div>
           </div>
-          <div className="flex flex-col gap-2 justify-center items-center p-4 w-64 bg-white rounded-lg rounded-l-none shadow-md">
+          <div className="hidden xl:flex flex-col gap-2 justify-center items-center p-4 w-64 bg-white rounded-lg rounded-l-none shadow-md">
             <div className="w-full">
               <Image
                 src={item.starting_from.imgURL}
@@ -93,13 +94,13 @@ const DeptMenu: FC = () => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <div className="flex gap-2 caret items-center hover:text-primary duration-300 cursor-pointer">
+      <div className="flex gap-1 xl:gap-2 caret items-center hover:text-primary duration-300 cursor-pointer py-3 xl:py-2 px-2 xl:px-0 bg-gray-100">
         <span>{menuIcon}</span>
         <span>Departments</span>
       </div>
 
       {open && (
-        <div className="absolute w-64 h-menu bg-white shadow-lg z-10 p-1 px-0 ">
+        <div className="absolute w-full xl:w-64 xl:h-menu bg-gray-100 xl:bg-white shadow-lg z-10 p-1 px-0 ">
           {Departments.map((item) => {
             return <DeptMenuItem item={item} key={item.name} />;
           })}
@@ -115,10 +116,13 @@ const Navbar: FC<{
 }> = ({ navOpen }) => {
   return (
     <nav
-      className={`xl:px-container border py-4 duration-500 ${
-        navOpen ? "block h-auto" : "hidden h-0"
-      } xl:flex xl:h-auto `}
+      className={`px-2 xl:py-2 xl:px-container border duration-500 ${
+        navOpen ? "flex flex-col h-auto" : "hidden h-0"
+      } xl:flex xl:flex-row xl:h-auto gap-3 xl:gap-0`}
     >
+      <div className="xl:hidden">
+        <SearchBox />
+      </div>
       <DeptMenu />
       {/* <div>asda</div> */}
     </nav>

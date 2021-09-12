@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  @variants responsive {
+    .caret::after {
+      display: inline-block;
+      margin-left: 0.3rem;
+      vertical-align: 0.1rem;
+      content: "";
+      border-top: 0.275rem solid;
+      border-right: 0.275rem solid transparent;
+      border-bottom: 0;
+      border-left: 0.275rem solid transparent;
+    }
+
+    .caret-r::after {
+      display: inline-block;
+      margin-left: 0.3rem;
+      vertical-align: 0.1rem;
+      content: "";
+      width: 0px;
+      height: 0px;
+      border-top: 0.275rem solid transparent;
+      /* border-right: 0.275rem solid; */
+      border-bottom: 0.275rem solid transparent;
+      border-left: 0.275rem solid;
+    }
+  }
+}
+
 html,
 body {
   padding: 0;
@@ -17,28 +45,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.caret::after {
-  display: inline-block;
-  margin-left: 0.3rem;
-  vertical-align: 0.1rem;
-  content: "";
-  border-top: 0.275rem solid;
-  border-right: 0.275rem solid transparent;
-  border-bottom: 0;
-  border-left: 0.275rem solid transparent;
-}
-
-.caret-r::after {
-  display: inline-block;
-  margin-left: 0.3rem;
-  vertical-align: 0.1rem;
-  content: "";
-  width: 0px;
-  height: 0px;
-  border-top: 0.275rem solid transparent;
-  /* border-right: 0.275rem solid; */
-  border-bottom: 0.275rem solid transparent;
-  border-left: 0.275rem solid;
 }
