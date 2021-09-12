@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import Image from "next/image";
-import { Departments, Home } from "../data/navbar";
+import { Departments, Home, Shop } from "../data/navbar";
 import styles from "../styles/Navbar.module.scss";
 import Price from "./Price";
 import SearchBox from "./SearchBox";
@@ -214,8 +214,8 @@ const HomeMenu: FC = () => {
   return (
     <div>
       <Menu title="Home">
-        <div className="xl:flex xl:items-stretch">
-          <div className="xl:h-96 xl:shadow-md">
+        <div className="xl:flex xl:flex-row xl:items-stretch xl:w-vw-50">
+          <div className="xl:h-96 xl:shadow-md ">
             {Home.map((item) => {
               return (
                 <div
@@ -231,21 +231,23 @@ const HomeMenu: FC = () => {
               );
             })}
           </div>
-          <div className="hidden xl:block">
+          <div className="hidden xl:flex xl:w-1/2">
             {imgUrl && (
-              <Menu sideMenu={true}>
-                <div
-                  className="xl:absolute w-64 h-96 xl:shadow-md"
-                  onMouseLeave={() => setImgUrl(null)}
-                >
+              <div
+                className="xl:shadow-md"
+                onMouseLeave={() => setImgUrl(null)}
+              >
+                <div className="w-full h-full">
                   <Image
                     src={imgUrl}
                     alt=""
-                    layout="fill"
+                    width="250px"
+                    height="360px"
+                    layout="fixed"
                     className="rounded-sm shadow-md"
                   />
                 </div>
-              </Menu>
+              </div>
             )}
           </div>
         </div>
@@ -271,47 +273,28 @@ const Navbar: FC<{
       <Vr />
       <HomeMenu />
       <Menu title="Shop">
-        <div className="py-2 px-4 bg-gray-100">
-          <div className="mb-7">
-            <h6 className="font-semibold mb-3">Shop layouts</h6>
-            <div className="flex flex-col gap-2">
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-            </div>
-          </div>
-          <div className="mb-7">
-            <h6 className="font-semibold mb-3">Marketplace</h6>
-            <div className="flex flex-col gap-2">
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-              <span>
-                <a href="#">Shop Grid - Left Sidebar</a>
-              </span>
-            </div>
-          </div>
+        <div
+          className={`py-2 px-4 bg-gray-100 xl:bg-white xl:w-vw-35 xl:h-vh-50 xl:flex xl:flex-col xl:flex-wrap xl:shadow-md`}
+        >
+          {Shop.map((item) => {
+            return (
+              <div className="mb-7 last:mb-0" key={genKey()}>
+                <h6 className="font-semibold mb-3 text-sm">{item.title}</h6>
+                <div className="flex flex-col gap-2">
+                  {item.urls.map((url) => {
+                    return (
+                      <span
+                        className="text-sm hover:text-primary duration-300"
+                        key={genKey()}
+                      >
+                        <a href={url.url}>{url.label}</a>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </Menu>
     </nav>

@@ -1039,4 +1039,148 @@ const Home = [
   },
 ];
 
-export { Departments, Home };
+const Shop = [
+  {
+    title: "Shop layouts",
+    urls: [
+      {
+        label: "Shop Grid - Left Sidebar",
+        url: "#",
+      },
+      {
+        label: "Shop Grid - Right Sidebar",
+        url: "#",
+      },
+      {
+        label: "Shop Grid - Filters on Top",
+        url: "#",
+      },
+      {
+        label: "Shop Grid - Left Sidebar",
+        url: "#",
+      },
+      {
+        label: "Shop Grid - Right Sidebar",
+        url: "#",
+      },
+      {
+        label: "Shop Grid - Filters on Top",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "Marketplace",
+    urls: [
+      {
+        label: "Category Page",
+        url: "#",
+      },
+      {
+        label: "Single Item Page",
+        url: "#",
+      },
+      {
+        label: "Vendor Page",
+        url: "#",
+      },
+      {
+        label: "Cart",
+        url: "#",
+      },
+      {
+        label: "Checkout",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "Shop pagges",
+    urls: [
+      {
+        label: "Category Page",
+        url: "#",
+      },
+      {
+        label: "Single Item Page",
+        url: "#",
+      },
+      {
+        label: "Vendor Page",
+        url: "#",
+      },
+      {
+        label: "Cart",
+        url: "#",
+      },
+      {
+        label: "Checkout",
+        url: "#",
+      },
+      {
+        label: "Category Page",
+        url: "#",
+      },
+      {
+        label: "Single Item Page",
+        url: "#",
+      },
+      {
+        label: "Vendor Page",
+        url: "#",
+      },
+      {
+        label: "Cart",
+        url: "#",
+      },
+      {
+        label: "Checkout",
+        url: "#",
+      },
+      {
+        label: "Category Page",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "Grocery store",
+    urls: [
+      {
+        label: "Product Catalog",
+        url: "#",
+      },
+      {
+        label: "Single Product Page",
+        url: "#",
+      },
+      {
+        label: "Checkout",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "Food Delivery",
+    urls: [
+      {
+        label: "Category Page",
+        url: "#",
+      },
+      {
+        label: "Single item (Restaurant)",
+        url: "#",
+      },
+      {
+        label: "Cart (Your Order)",
+        url: "#",
+      },
+      {
+        label: "Checkout (Address & Payment)",
+        url: "#",
+      },
+    ],
+  },
+];
+
+export { Departments, Home, Shop };
