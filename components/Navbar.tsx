@@ -1,9 +1,16 @@
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useState,
+  useEffect,
+} from "react";
 import Image from "next/image";
-import Departments from "../data/navbar";
+import { Departments, Home } from "../data/navbar";
 import styles from "../styles/Navbar.module.scss";
 import Price from "./Price";
 import SearchBox from "./SearchBox";
+import genKey from "../utils/genKey";
 
 type DeptMenuItemType = typeof Departments[0];
 
@@ -21,6 +28,12 @@ const menuIcon = (
     />
   </svg>
 );
+
+const Vr: FC = () => {
+  return (
+    <hr className="w-7 bg-gray-300 self-center transform rotate-90 hidden xl:inline" />
+  );
+};
 
 const DeptMenuItem: FC<{ item: DeptMenuItemType }> = ({ item }) => {
   const [open, setOpen] = useState(false);
@@ -110,21 +123,96 @@ const DeptMenu: FC = () => {
   );
 };
 
+const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
+  children,
+  title,
+  sideMenu = false,
+}) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!title) setOpen(true);
+  }, [title]);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      {title && <div className="px-4 py-1 w-full cursor-pointer">{title}</div>}
+      {open && (
+        <div
+          className={`absolute bg-white z-10 shadow-lg flex flex-col ${
+            sideMenu ? "left-full top-0" : "top-full left-0"
+          }`}
+        >
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const HomeMenu: FC = () => {
+  const [imgUrl, setImgUrl] = useState<string | null>(null);
+
+  return (
+    <div>
+      <Menu title="Home">
+        <div className="flex items-stretch">
+          <div className="h-96">
+            {Home.map((item) => {
+              return (
+                <div
+                  className="w-52 border-b last:border-b-0 py-2 px-4 cursor-pointer bg-white"
+                  key={genKey()}
+                  onMouseEnter={() => setImgUrl(item.imgURL)}
+                >
+                  <div>
+                    <h4 className="font-medium text-sm">{item.title}</h4>
+                    <h6 className="text-xs text-secondary">{item.subtitle}</h6>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            {imgUrl && (
+              <Menu sideMenu={true}>
+                <div className="w-64 h-96" onMouseLeave={() => setImgUrl(null)}>
+                  <Image
+                    src={imgUrl}
+                    alt=""
+                    layout="fill"
+                    className="rounded-sm shadow-md"
+                  />
+                </div>
+              </Menu>
+            )}
+          </div>
+        </div>
+      </Menu>
+    </div>
+  );
+};
+
 const Navbar: FC<{
   navOpen: boolean;
   setNavOpen: Dispatch<SetStateAction<boolean>>;
 }> = ({ navOpen }) => {
   return (
     <nav
-      className={`px-2 xl:py-2 xl:px-container border duration-500 ${
+      className={`px-2 xl:py-2 xl:px-container border duration-500 select-none ${
         navOpen ? "flex flex-col h-auto" : "hidden h-0"
-      } xl:flex xl:flex-row xl:h-auto gap-3 xl:gap-0`}
+      } xl:flex xl:flex-row xl:items-center xl:h-auto gap-3`}
     >
       <div className="xl:hidden">
         <SearchBox />
       </div>
       <DeptMenu />
-      {/* <div>asda</div> */}
+      <Vr />
+      <HomeMenu />
     </nav>
   );
 };

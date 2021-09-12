@@ -1001,4 +1001,42 @@ const Departments = [
   },
 ];
 
-export default Departments;
+const Home = [
+  {
+    title: "Fashion Strore v.1",
+    subtitle: "Classic shop layout",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th01.jpg",
+  },
+  {
+    title: "Electronic Store",
+    subtitle: "Slider + Promo banners",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th03.jpg",
+  },
+  {
+    title: "Marketplace",
+    subtitle: "Multi-vendor, digital goods",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th04.jpg",
+  },
+  {
+    title: "Grocery Store",
+    subtitle: "Full width + Side menu",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th06.jpg",
+  },
+  {
+    title: "Food Delivery Service",
+    subtitle: "Food & Beverages delivery",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th07.jpg",
+  },
+  {
+    title: "Fashion Store v.2",
+    subtitle: "Slider + Featured categories",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th02.jpg",
+  },
+  {
+    title: "Single Product Store",
+    subtitle: "Single product / mono brand",
+    imgURL: "https://cartzilla.createx.studio/img/home/preview/th05.jpg",
+  },
+];
+
+export { Departments, Home };

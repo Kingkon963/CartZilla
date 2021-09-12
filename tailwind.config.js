@@ -17,7 +17,7 @@ module.exports = {
   variants: {
     extend: {
       ringWidth: ["focus", "hover", "active"],
-      padding: ["hover"],
+      padding: ["hover", "last"],
       borderWidth: ["last"],
     },
   },
