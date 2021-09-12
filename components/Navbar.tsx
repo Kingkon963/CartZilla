@@ -304,7 +304,7 @@ const Navbar: FC<{
         >
           <div className="xl:w-42">
             <Menu title="Shop User Account" sideMenu={true}>
-              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md">
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
                 <span className="xl:w-42 hover:text-primary duration-300">
                   <a href="#">Order History</a>
                 </span>
@@ -331,7 +331,7 @@ const Navbar: FC<{
           </div>
           <div className="xl:w-42">
             <Menu title="Vendor Dashboard" sideMenu={true}>
-              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md">
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
                 <span className="xl:w-42 hover:text-primary duration-300">
                   <a href="#">Order History</a>
                 </span>
@@ -365,6 +365,111 @@ const Navbar: FC<{
           <div className="xl:w-42 px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white">
             <span className=" hover:text-primary duration-300">
               <a href="#">Password Recovery</a>
+            </span>
+          </div>
+        </div>
+      </Menu>
+
+      <Menu title="Pages">
+        <div
+          className={`p-2 px-0 bg-gray-100  xl:bg-white xl:flex xl:flex-wrap xl:shadow-md xl:text-sm gap-2 rounded-md`}
+        >
+          <div className="xl:w-42">
+            <Menu title="Navbar Variants" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Order History</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Profile Settings</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Account Addresses</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Payment Methods</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Wishlist</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">My Tickets</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Single Ticket</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+          <hr className="bg-gray-300 w-full" />
+          <div className="xl:w-42 px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white">
+            <span className=" hover:text-primary duration-300">
+              <a href="#">About Us</a>
+            </span>
+          </div>
+          <div className="xl:w-42 px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white">
+            <span className=" hover:text-primary duration-300">
+              <a href="#">Contacts</a>
+            </span>
+          </div>
+          <div className="xl:w-42">
+            <Menu title="Help Center" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Order History</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Profile Settings</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Account Addresses</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Payment Methods</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Wishlist</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">My Tickets</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Single Ticket</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+          <div className="xl:w-42">
+            <Menu title="404 Not Found" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Order History</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Profile Settings</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Account Addresses</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Payment Methods</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Wishlist</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">My Tickets</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Single Ticket</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+          <hr className="bg-gray-300 w-full" />
+          <div className="xl:w-42 px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white">
+            <span className=" hover:text-primary duration-300">
+              <a href="#">Sticky Footer Demo</a>
             </span>
           </div>
         </div>
