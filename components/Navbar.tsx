@@ -185,8 +185,8 @@ const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
     >
       {title && (
         <div
-          className={`px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white ${
-            wsLessThanXL() ? "caret" : ""
+          className={`px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white rounded-md hover:text-primary duration-300 ${
+            wsLessThanXL() ? "caret" : sideMenu ? "caret-r" : ""
           } `}
           onClick={() => {
             if (wsLessThanXL()) setOpen(!open);
@@ -197,7 +197,7 @@ const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
       )}
       {open && (
         <div
-          className={`xl:absolute bg-white z-10 flex flex-col w-full ${
+          className={`xl:absolute bg-white z-10 flex flex-col w-auto ${
             sideMenu ? "left-full top-0" : "top-full left-0"
           }`}
         >
@@ -279,12 +279,12 @@ const Navbar: FC<{
           {Shop.map((item) => {
             return (
               <div className="mb-7 last:mb-0" key={genKey()}>
-                <h6 className="font-semibold mb-3 text-sm">{item.title}</h6>
+                <h6 className="font-semibold mb-3 xl:text-sm">{item.title}</h6>
                 <div className="flex flex-col gap-2">
                   {item.urls.map((url) => {
                     return (
                       <span
-                        className="text-sm hover:text-primary duration-300"
+                        className="xl:text-sm hover:text-primary duration-300"
                         key={genKey()}
                       >
                         <a href={url.url}>{url.label}</a>
@@ -295,6 +295,78 @@ const Navbar: FC<{
               </div>
             );
           })}
+        </div>
+      </Menu>
+
+      <Menu title="Account">
+        <div
+          className={`p-2 px-0 bg-gray-100  xl:bg-white xl:flex xl:flex-wrap xl:shadow-md xl:text-sm gap-2 rounded-md`}
+        >
+          <div className="xl:w-42">
+            <Menu title="Shop User Account" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md">
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Order History</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Profile Settings</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Account Addresses</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Payment Methods</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Wishlist</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">My Tickets</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Single Ticket</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+          <div className="xl:w-42">
+            <Menu title="Vendor Dashboard" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md">
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Order History</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Profile Settings</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Account Addresses</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Payment Methods</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Wishlist</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">My Tickets</a>
+                </span>
+                <span className="xl:w-42 hover:text-primary duration-300">
+                  <a href="#">Single Ticket</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+
+          <div className="xl:w-42 px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white">
+            <span className=" hover:text-primary duration-300">
+              <a href="#">Sign In / Sign Up</a>
+            </span>
+          </div>
+          <div className="xl:w-42 px-4 py-3 xl:py-1 w-full cursor-pointer bg-gray-100 xl:bg-white">
+            <span className=" hover:text-primary duration-300">
+              <a href="#">Password Recovery</a>
+            </span>
+          </div>
         </div>
       </Menu>
     </nav>

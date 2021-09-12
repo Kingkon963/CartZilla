@@ -11,6 +11,7 @@ module.exports = {
         container: "20.5rem",
         menu: "26rem",
         sidebar: "35rem",
+        42: "10.5rem",
         "vw-25": "25vw",
         "vw-35": "35vw",
         "vw-50": "50vw",
