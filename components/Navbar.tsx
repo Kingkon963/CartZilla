@@ -474,6 +474,49 @@ const Navbar: FC<{
           </div>
         </div>
       </Menu>
+
+      <Menu title="Blogs">
+        <div
+          className={`p-2 px-0 bg-gray-100  xl:bg-white xl:flex xl:flex-wrap xl:shadow-md xl:text-sm gap-2 rounded-md`}
+        >
+          <div className="xl:w-44">
+            <Menu title="Blog List Layouts" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-44 hover:text-primary duration-300">
+                  <a href="#">List with Sidebar</a>
+                </span>
+                <span className="xl:w-44 hover:text-primary duration-300">
+                  <a href="#">List no Sidebar</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+          <div className="xl:w-44">
+            <Menu title="Blog Grid Layouts" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-44 hover:text-primary duration-300">
+                  <a href="#">Grid with Sidebar</a>
+                </span>
+                <span className="xl:w-44 hover:text-primary duration-300">
+                  <a href="#">Grid no Sidebar</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+          <div className="xl:w-44">
+            <Menu title="Single Post Layouts" sideMenu={true}>
+              <div className="flex flex-col xl:shadow-lg pl-5 gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-44 hover:text-primary duration-300">
+                  <a href="#">Article with Sidebar</a>
+                </span>
+                <span className="xl:w-44 hover:text-primary duration-300">
+                  <a href="#">Article no Sidebar</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+        </div>
+      </Menu>
     </nav>
   );
 };
