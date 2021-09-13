@@ -262,7 +262,7 @@ const Navbar: FC<{
 }> = ({ navOpen }) => {
   return (
     <nav
-      className={`px-2 xl:py-2 xl:px-container border duration-500 select-none ${
+      className={`px-2 xl:py-2 xl:px-container duration-500 select-none xl:text-gray-700 ${
         navOpen ? "flex flex-col h-auto" : "hidden h-0"
       } xl:flex xl:flex-row xl:items-center xl:h-auto gap-3`}
     >
@@ -511,6 +511,130 @@ const Navbar: FC<{
                 </span>
                 <span className="xl:w-44 hover:text-primary duration-300">
                   <a href="#">Article no Sidebar</a>
+                </span>
+              </div>
+            </Menu>
+          </div>
+        </div>
+      </Menu>
+
+      <Menu title="Docs / Components">
+        <div
+          className={`p-2 px-0 bg-gray-100  xl:bg-white xl:flex xl:flex-wrap xl:shadow-md xl:text-sm gap-2 rounded-md`}
+        >
+          <div className="xl:w-44">
+            <Menu>
+              <div className="flex flex-col xl:shadow-lg  gap-2 py-2 rounded-md bg-gray-100  xl:bg-white">
+                <span className="xl:w-44 hover:text-primary duration-300 flex mx-2 py-1">
+                  <div className="w-2/12 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"
+                      />
+                      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                    </svg>
+                  </div>
+                  <div className="w-10/12">
+                    <a
+                      className="flex flex-col justify-center items-start"
+                      href="#"
+                    >
+                      <span>Documentation</span>
+                      <span className="text-xs">Kick-start customization</span>
+                    </a>
+                  </div>
+                </span>
+                <hr className="bg-gray-300 w-full" />
+                <span className="xl:w-44 hover:text-primary duration-300 flex mx-2 py-1">
+                  <div className="w-2/12 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
+                    </svg>
+                  </div>
+                  <div className="w-10/12">
+                    <a
+                      className="flex flex-col justify-center items-start"
+                      href="#"
+                    >
+                      <span>
+                        Components{" "}
+                        <span className="text-xs px-1 rounded-sm text-white bg-blue-400">
+                          40+
+                        </span>
+                      </span>
+                      <span className="text-xs">Faster page building</span>
+                    </a>
+                  </div>
+                </span>
+                <hr className="bg-gray-300 w-full" />
+                <span className="xl:w-44 hover:text-primary duration-300 flex mx-2 py-1">
+                  <div className="w-2/12 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path
+                        fillRule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="w-10/12">
+                    <a
+                      className="flex flex-col justify-center items-start"
+                      href="#"
+                    >
+                      <span>
+                        Changelog{" "}
+                        <span className="text-xs px-1 rounded-sm text-white bg-green-400">
+                          v2.3.0
+                        </span>
+                      </span>
+                      <span className="text-xs">Regular updates</span>
+                    </a>
+                  </div>
+                </span>
+                <hr className="bg-gray-300 w-full" />
+                <span className="xl:w-44 hover:text-primary duration-300 flex mx-2 py-1">
+                  <div className="w-2/12 flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                  </div>
+                  <div className="w-10/12">
+                    <a
+                      className="flex flex-col justify-center items-start"
+                      href="#"
+                    >
+                      <span>Support</span>
+                      <span className="text-xs">support@createx.studio</span>
+                    </a>
+                  </div>
                 </span>
               </div>
             </Menu>
