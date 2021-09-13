@@ -2,14 +2,15 @@ import { FC } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import Layout from "../components/Layout";
+import keyGen from "../utils/genKey";
 
 const Slider: FC = () => {
   return (
-    <div className="h-vh-75 border">
-      <div className="flex flex-col h-full">
-        <div className="">
+    <div className="xl:order-2 xl:w-full xl:px-14 flex flex-col">
+      <div className="flex flex-col xl:flex-row h-full xl:justify-center xl:gap-7">
+        <div className="xl:order-2 xl:flex-1 xl:self-center ">
           <Image
             src="https://cartzilla.createx.studio/img/home/hero-slider/05.jpg"
             alt=""
@@ -18,20 +19,102 @@ const Slider: FC = () => {
             layout="responsive"
           />
         </div>
-        <div className="flex flex-col flex-1 items-center justify-start gap-3 ">
-          <h1 className="text-2xl font-light  mt-4">World of music with</h1>
-          <h1 className="text-4xl font-medium text-gray-700">Headphones</h1>
+        <div className="flex flex-col flex-1 xl:flex-none xl:order-1 items-center xl:items-start  xl:justify-center justify-start gap-3 ">
+          <h1 className="text-2xl xl:text-4xl font-light  mt-4">
+            World of music with
+          </h1>
+          <h1 className="text-4xl xl:text-6xl font-medium text-gray-700">
+            Headphones
+          </h1>
           <h3 className="text-xl font-light">Choose between top brands</h3>
-          <button className="bg-primary py-2 px-6 text-white rounded-md mt-3">
+          <button className="bg-primary py-2 px-6 text-white rounded-md mt-3 shadow-lg">
             Shop Now
           </button>
         </div>
-        <div className="self-center">...</div>
       </div>
+      <div className="text-center ">...</div>
     </div>
   );
 };
 
+const ProductTiles: FC = () => {
+  const data = [
+    {
+      text: "Next Gen Video with 360 Cam",
+      imgURL:
+        "https://cartzilla.createx.studio/img/home/banners/banner-sm01.png",
+      url: "#",
+      color: "blue",
+    },
+    {
+      text: "Top Rated Gadgets are on Sale",
+      imgURL:
+        "https://cartzilla.createx.studio/img/home/banners/banner-sm02.png",
+      url: "#",
+      color: "orange",
+    },
+    {
+      text: "Catch Big Deals on Earbuds",
+      imgURL:
+        "https://cartzilla.createx.studio/img/home/banners/banner-sm03.png",
+      url: "#",
+      color: "green",
+    },
+  ];
+
+  const COLORS = {
+    blue: {
+      bg: "#E9F3FC",
+      text: "#69B7FE",
+    },
+    orange: {
+      bg: "#F7F2EE",
+      text: "#FEA569",
+    },
+    green: {
+      bg: "#E6F6F3",
+      text: "#42D697",
+    },
+  };
+
+  return (
+    <div className="w-full xl:w-96 overflow-scroll xl:overflow-hidden xl:order-1 xl:px-5">
+      <div className="flex xl:flex-col gap-3 ">
+        {data.map((tile) => {
+          const key = tile.color as keyof typeof COLORS;
+          const color = COLORS[key];
+          return (
+            <div
+              className={`${styles.productTile}`}
+              key={keyGen()}
+              style={{ backgroundColor: color.bg }}
+            >
+              <div className=" w-1/2 ">
+                <Image
+                  src={tile.imgURL}
+                  alt=""
+                  width="250"
+                  height="304"
+                  layout="responsive"
+                />
+              </div>
+              <div className="w-1/2 flex flex-col gap-2 justify-center">
+                <span className="text-xl">{tile.text}</span>
+                <a
+                  href={tile.url}
+                  className="text-sm "
+                  style={{ color: color.text }}
+                >
+                  Shop now
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 const Home: NextPage = () => {
   return (
     <div className="w-screen">
@@ -41,9 +124,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <header className="flex flex-col bg-lightBlue ">
+        <header className="flex flex-col xl:flex-row xl:px-container xl:py-12 bg-lightBlue px-2 w-full select-none">
           <Slider />
-          <div>Tiles</div>
+          <ProductTiles />
         </header>
       </Layout>
     </div>
