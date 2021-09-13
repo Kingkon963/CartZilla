@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         primary: "#FE696A",
         secondary: "#373F50",
+        lightBlue: "#F6FAFD",
       },
       spacing: {
         container: "20.5rem",
