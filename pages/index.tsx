@@ -332,7 +332,7 @@ const Home: NextPage = () => {
       <Layout>
         <Header />
         {/* Trending Products */}
-        <div className="w-full px-3 xl:px-container mt-12 pb-96">
+        <div className="w-full px-3 xl:px-container mt-12 ">
           <div className="flex justify-between border-b py-4 items-end">
             <div>
               <h1 className="text-2xl font-semibold text-gray-700 tracking-wide">
@@ -350,6 +350,40 @@ const Home: NextPage = () => {
             {TrendingProducts.map((product) => {
               return <ProductCard product={product} key={keyGen()} />;
             })}
+          </div>
+        </div>
+
+        {/* Limited Offer */}
+        <div className="h-vh-50 xl:px-container mb-96 mt-7">
+          <div
+            className=" w-full h-full flex flex-col xl:flex-row"
+            style={{ backgroundColor: "#EEF8FE" }}
+          >
+            <div className="w-2/6">
+              <div className="flex flex-col h-full justify-center items-start pl-10">
+                <div className="bg-primary text-white px-2 text-sm rounded mb-10">
+                  Limited Offer
+                </div>
+                <h1 className="font-thin text-3xl">All new</h1>
+                <h1 className="font-bold text-4xl">Last Gen iPad Pro</h1>
+                <h3 className="font-thin text-xl tracking-wider">
+                  at discounted price. Hurry up!
+                </h3>
+                <span className="tracking-widest py-5 ">dhms</span>
+                <button className="bg-blue-600 text-white px-6 py-2 rounded">
+                  View Offers
+                </button>
+              </div>
+            </div>
+            <div className="w-4/6 flex items-center justify-end">
+              <Image
+                src="https://cartzilla.createx.studio/img/home/banners/offer.jpg"
+                width="700"
+                height="401"
+                alt="offer"
+              />
+            </div>
+            <div></div>
           </div>
         </div>
       </Layout>
