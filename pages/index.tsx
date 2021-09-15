@@ -225,7 +225,7 @@ const ProductCard: FC<{ product: typeof TrendingProducts[0] }> = ({
   };
   return (
     <div
-      className={`xl:w-3/12 py-5 hover:shadow-2xl border-b xl:border-b-0 xl:relative ${
+      className={`xl:w-3/12 py-5 hover:shadow-2xl border-b last:border-b-0 xl:border-b-0 xl:relative ${
         open ? "z-20" : ""
       }`}
       onMouseEnter={() => handleHover()}
@@ -354,28 +354,35 @@ const Home: NextPage = () => {
         </div>
 
         {/* Limited Offer */}
-        <div className="h-vh-50 xl:px-container mb-96 mt-7">
+        <div className="h-vh-50 px-3 xl:px-container mb-96 mt-7">
           <div
-            className=" w-full h-full flex flex-col xl:flex-row"
+            className="w-full h-full flex flex-col xl:flex-row rounded"
             style={{ backgroundColor: "#EEF8FE" }}
           >
-            <div className="w-2/6">
-              <div className="flex flex-col h-full justify-center items-start pl-10">
-                <div className="bg-primary text-white px-2 text-sm rounded mb-10">
+            <div className="w-full xl:w-2/6">
+              <div className="flex flex-col h-full justify-center items-start pl-6 xl:pl-10">
+                <div className="bg-primary text-white px-2 text-sm rounded my-7 xl:my-0 xl:mb-10">
                   Limited Offer
                 </div>
-                <h1 className="font-thin text-3xl">All new</h1>
-                <h1 className="font-bold text-4xl">Last Gen iPad Pro</h1>
-                <h3 className="font-thin text-xl tracking-wider">
+                <h1 className="font-thin text-2xl xl:text-3xl">All new</h1>
+                <h1 className="font-bold text-3xl xl:text-4xl">
+                  Last Gen iPad Pro
+                </h1>
+                <h3 className="font-thin text-lg xl:text-xl tracking-wider">
                   at discounted price. Hurry up!
                 </h3>
-                <span className="tracking-widest py-5 ">dhms</span>
+                <span
+                  className="tracking-widest py-5 text-sm text-gray-500"
+                  style={{ letterSpacing: "1rem" }}
+                >
+                  dhms
+                </span>
                 <button className="bg-blue-600 text-white px-6 py-2 rounded">
                   View Offers
                 </button>
               </div>
             </div>
-            <div className="w-4/6 flex items-center justify-end">
+            <div className="w-full xl:w-4/6 flex items-center justify-end">
               <Image
                 src="https://cartzilla.createx.studio/img/home/banners/offer.jpg"
                 width="700"
@@ -383,7 +390,6 @@ const Home: NextPage = () => {
                 alt="offer"
               />
             </div>
-            <div></div>
           </div>
         </div>
       </Layout>
