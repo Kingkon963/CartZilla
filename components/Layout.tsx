@@ -58,7 +58,7 @@ const BottomNavbar = () => {
 };
 
 const Layout: FC = ({ children }) => {
-  const [navOpen, setNavOpen] = useState(true);
+  const [navOpen, setNavOpen] = useState(false);
   const [showBottomNav, setShowBottomNav] = useState(false);
   const ws = useWindowSize();
 
