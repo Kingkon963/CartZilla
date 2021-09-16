@@ -69,7 +69,7 @@ const Layout: FC = ({ children }) => {
     }
   }, [ws]);
   return (
-    <div className="flex flex-col flex-wrap">
+    <div className="">
       <Topbar />
       <Appbar setNavOpen={setNavOpen} />
       <Navbar navOpen={navOpen} setNavOpen={setNavOpen} />

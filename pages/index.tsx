@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Layout from "../components/Layout";
 import Price from "../components/Price";
+import CompanySlides from "../components/CompanySlides";
 import keyGen from "../utils/genKey";
 import useWindowSize from "../hooks/useWindowSize";
 
@@ -103,7 +104,7 @@ const Header: FC = () => {
               width="420"
               height="430"
               loading="eager"
-              layout="responsive"
+              layout="intrinsic"
             />
           </div>
           <div className="flex flex-col flex-1 xl:flex-none xl:order-1 items-center xl:items-start  xl:justify-center justify-start gap-3 ">
@@ -354,7 +355,7 @@ const Home: NextPage = () => {
         </div>
 
         {/* Limited Offer */}
-        <div className="h-vh-50 px-3 xl:px-container mb-96 mt-7">
+        <div className="xl:h-vh-50 px-3 xl:px-container mt-7">
           <div
             className="w-full h-full flex flex-col xl:flex-row rounded"
             style={{ backgroundColor: "#EEF8FE" }}
@@ -382,14 +383,22 @@ const Home: NextPage = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full xl:w-4/6 flex items-center justify-end">
+            <div className="w-full bg-red-300 xl:w-4/6 flex items-center justify-end">
               <Image
                 src="https://cartzilla.createx.studio/img/home/banners/offer.jpg"
                 width="700"
                 height="401"
                 alt="offer"
+                layout="intrinsic"
               />
             </div>
+          </div>
+        </div>
+
+        {/* Company Slides */}
+        <div className="px-3 xl:px-container mb-96 mt-10">
+          <div className="cursor-pointer">
+            <CompanySlides />
           </div>
         </div>
       </Layout>
