@@ -479,7 +479,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <button className="px-1 xl:px-5 py-1 bg-transparent border border-blue-400 text-blue-400 rounded-md text-sm">
-                More Products
+                More Products {">"}
               </button>
             </div>
           </div>
@@ -545,7 +545,7 @@ const Home: NextPage = () => {
         </div>
 
         {/* Read the blog */}
-        <div className="flex flex-col xl:flex-row mb-96 mt-20">
+        <div className="flex flex-col xl:flex-row mt-20">
           <button className="xl:w-1/2 bg-red-50 px-12 xl:px-24 py-14 flex flex-col justify-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -585,6 +585,147 @@ const Home: NextPage = () => {
             <h3 className="text-gray-400 text-sm">#ShopWithCartzilla</h3>
           </button>
         </div>
+
+        <footer className="bg-secondary text-white px-3 xl:px-container py-10">
+          <div className="flex flex-col xl:flex-row gap-7">
+            <div className="xl:w-4/12">
+              <h1 className="text-lg mb-4">Shop departments</h1>
+              <div className="flex flex-col gap-2">
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Sneakers {"&"} Athletic</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Athletic Apparel</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Sandals</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Jeans</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Shirts {"&"} Tops</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Shorts</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">T-Shirts</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Swimwear</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Clogs {"&"} Mules</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Bags {"&"} Wallets</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Accessories</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Sunglasses {"&"} Eyewear</a>
+                </span>
+                <span className="text-sm text-gray-400 hover:text-white duration-300">
+                  <a href="#">Watches</a>
+                </span>
+              </div>
+            </div>
+            <div className="xl:w-4/12 flex flex-col gap-7">
+              <div>
+                <h1 className="text-lg mb-4">Account {"&"} shipping info</h1>
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Your account</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Shipping rates {"&"} policies</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Refunds {"&"} replacements</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Order tracking</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Delivery info</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Taxes {"&"} fees</a>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <h1 className="text-lg mb-4">About us</h1>
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">About company</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Our team</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">Careers</a>
+                  </span>
+                  <span className="text-sm text-gray-400 hover:text-white duration-300">
+                    <a href="#">News</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="xl:w-4/12 flex flex-col gap-7">
+              <div>
+                <h1 className="text-lg mb-4">Stay informed</h1>
+                <div className="flex items-stretch justify-start">
+                  <span className="bg-white text-black p-4 rounded-l">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                    </svg>
+                  </span>
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="bg-white outline-none text-black w-64"
+                  />
+                  <button className="bg-primary text-white rounded-r px-5">
+                    Subscribe*
+                  </button>
+                </div>
+                <p className="text-xs text-gray-400 mt-2">
+                  *Subscribe to our newsletter to receive early discount offers,
+                  updates and new products info.
+                </p>
+              </div>
+              <div>
+                <h1 className="text-lg mb-4">Download our app</h1>
+                <div className="flex items-stretch justify-start gap-3 xl:gap-7">
+                  <button className="flex justify-center items-center w-48 p-3 rounded-lg bg-secondaryDark">
+                    <div className="w-2/6">apple</div>
+                    <div className="w-4/6">
+                      <h3 className="text-xs text-gray-400">Download on the</h3>
+                      <h1 className="">App Store</h1>
+                    </div>
+                  </button>
+                  <button className="flex justify-center items-center w-48 p-3 rounded-lg bg-secondaryDark">
+                    <div className="w-2/6">google</div>
+                    <div className="w-4/6">
+                      <h3 className="text-xs text-gray-400">Download on the</h3>
+                      <h1 className="">Google Play</h1>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div></div>
+        </footer>
       </Layout>
     </div>
   );
