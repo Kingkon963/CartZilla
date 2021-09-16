@@ -322,6 +322,125 @@ const ProductCard: FC<{ product: typeof TrendingProducts[0] }> = ({
   );
 };
 
+const ItemsCategory: FC = () => {
+  const Bestsellers = [
+    {
+      title: "Wireless Bluetooth Headphones",
+      price: 259,
+      imgURL: "https://cartzilla.createx.studio/img/shop/cart/widget/05.jpg",
+    },
+    {
+      title: "Cloud Security Camera",
+      price: 122,
+      imgURL: "https://cartzilla.createx.studio/img/shop/cart/widget/06.jpg",
+    },
+    {
+      title: "Android Smartphone S10",
+      price: 799,
+      imgURL: "https://cartzilla.createx.studio/img/shop/cart/widget/07.jpg",
+    },
+    {
+      title: "Android Smart TV Box",
+      price: 67,
+      prevPrice: 90.43,
+      imgURL: "https://cartzilla.createx.studio/img/shop/cart/widget/08.jpg",
+    },
+  ];
+  return (
+    <div className="flex flex-col xl:flex-row gap-10">
+      <div className="flex flex-col items-start xl:w-4/12">
+        <h1 className="font-bold mb-5">Bestsellers</h1>
+        {Bestsellers.map((item) => {
+          return (
+            <span
+              className={`flex w-full duration-500 border-b mb-5`}
+              key={keyGen()}
+            >
+              <div className="w-2/12">
+                <Image
+                  src={item.imgURL}
+                  width="64"
+                  height="64"
+                  alt="product"
+                  layout="intrinsic"
+                />
+              </div>
+              <div className="flex flex-col ml-1 w-10/12">
+                <h6 className="cursor-pointer hover:text-primary duration-300">
+                  {item.title}
+                </h6>
+                <span>
+                  <Price price={item.price} prevPrice={item.prevPrice} />
+                </span>
+              </div>
+            </span>
+          );
+        })}
+      </div>
+
+      <div className="flex flex-col items-start xl:w-4/12 ">
+        <h1 className="font-bold mb-5">New Arrivals</h1>
+        {Bestsellers.map((item) => {
+          return (
+            <span
+              className={`flex w-full duration-500 border-b mb-5`}
+              key={keyGen()}
+            >
+              <div className="w-2/12">
+                <Image
+                  src={item.imgURL}
+                  width="64"
+                  height="64"
+                  alt="product"
+                  layout="intrinsic"
+                />
+              </div>
+              <div className="flex flex-col ml-1 xl:w-10/12">
+                <h6 className="cursor-pointer hover:text-primary duration-300">
+                  {item.title}
+                </h6>
+                <span>
+                  <Price price={item.price} prevPrice={item.prevPrice} />
+                </span>
+              </div>
+            </span>
+          );
+        })}
+      </div>
+
+      <div className="flex flex-col items-start xl:w-4/12 ">
+        <h1 className="font-bold mb-5">Top Rated</h1>
+        {Bestsellers.map((item) => {
+          return (
+            <span
+              className={`flex w-full duration-500 border-b mb-5`}
+              key={keyGen()}
+            >
+              <div className="w-2/12">
+                <Image
+                  src={item.imgURL}
+                  width="64"
+                  height="64"
+                  alt="product"
+                  layout="intrinsic"
+                />
+              </div>
+              <div className="flex flex-col ml-1 w-10/12">
+                <h6 className="cursor-pointer hover:text-primary duration-300">
+                  {item.title}
+                </h6>
+                <span>
+                  <Price price={item.price} prevPrice={item.prevPrice} />
+                </span>
+              </div>
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 const Home: NextPage = () => {
   return (
     <div className="w-screen">
@@ -396,10 +515,15 @@ const Home: NextPage = () => {
         </div>
 
         {/* Company Slides */}
-        <div className="px-3 xl:px-container mb-96 mt-10">
+        <div className="px-3 xl:px-container mt-10">
           <div className="cursor-pointer">
             <CompanySlides />
           </div>
+        </div>
+
+        {/* Items category */}
+        <div className="px-3 xl:px-container mt-10 mb-96">
+          <ItemsCategory />
         </div>
       </Layout>
     </div>

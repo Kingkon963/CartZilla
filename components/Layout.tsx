@@ -20,7 +20,7 @@ const BottomNavbar = () => {
         </svg>
         <span className="text-xs ">Wishlist</span>
       </div>
-      <div className=" border-l border-r flex flex-col items-center justify-center w-1/3">
+      <div className=" flex flex-col  border-l border-r items-center justify-center w-1/3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -58,7 +58,7 @@ const BottomNavbar = () => {
 };
 
 const Layout: FC = ({ children }) => {
-  const [navOpen, setNavOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(true);
   const [showBottomNav, setShowBottomNav] = useState(false);
   const ws = useWindowSize();
 
