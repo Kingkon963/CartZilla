@@ -383,7 +383,7 @@ const Home: NextPage = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full bg-red-300 xl:w-4/6 flex items-center justify-end">
+            <div className="w-full xl:w-4/6 flex items-center justify-end">
               <Image
                 src="https://cartzilla.createx.studio/img/home/banners/offer.jpg"
                 width="700"
