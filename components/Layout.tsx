@@ -71,8 +71,10 @@ const Layout: FC = ({ children }) => {
   return (
     <div className="">
       <Topbar />
-      <Appbar setNavOpen={setNavOpen} />
-      <Navbar navOpen={navOpen} setNavOpen={setNavOpen} />
+      <div className="sticky top-0 bg-white z-30">
+        <Appbar setNavOpen={setNavOpen} />
+        <Navbar navOpen={navOpen} setNavOpen={setNavOpen} />
+      </div>
       {children}
 
       {showBottomNav && <BottomNavbar />}

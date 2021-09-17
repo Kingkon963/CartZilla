@@ -33,7 +33,7 @@ const Header: FC = () => {
   const Slider: FC = () => {
     return (
       <div
-        className="xl:order-2 xl:w-full xl:px-14 flex flex-col overflow-x-scroll no-scrollBar"
+        className="xl:order-2 xl:w-vw-75 xl:px-14 flex flex-col overflow-x-scroll no-scrollBar"
         style={{ scrollbarWidth: "none" }}
       >
         <HomeHeadCarousel />

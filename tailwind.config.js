@@ -2,6 +2,12 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1440px",
+    },
     extend: {
       colors: {
         primary: "#FE696A",
@@ -10,7 +16,7 @@ module.exports = {
         lightBlue: "#F6FAFD",
       },
       spacing: {
-        container: "20.5rem",
+        container: "8rem",
         menu: "26rem",
         sidebar: "35rem",
         42: "10.5rem",

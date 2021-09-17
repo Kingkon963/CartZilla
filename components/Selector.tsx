@@ -39,7 +39,7 @@ const Selector: React.FC<SelectorProps> = ({ children, title, up }) => {
       </span>
       {open && (
         <div
-          className={`absolute flex flex-col gap-2 rounded-md shadow-md ${
+          className={`absolute flex flex-col gap-2 rounded-md shadow-md z-40 ${
             up ? "bottom-6" : "top-6"
           } bg-white text-black p-4 z-10`}
           onBlur={() => setOpen(false)}

@@ -38,13 +38,13 @@ const SearchBox: FC = () => {
       <div
         className={`border ${
           catfocused ? "border-primary" : ""
-        } outline-none hidden xl:flex items-center justify-center w-3/12`}
+        } outline-none hidden xl:flex items-center justify-center w-3/12 rounded-r`}
         onFocus={() => setCatFocused(true)}
         onBlur={() => setCatFocused(false)}
       >
         <select
           name="categories"
-          className="w-full h-full focus:border-primary px-3 outline-none"
+          className="w-full h-full focus:border-primary px-3 outline-none text-sm "
         >
           <option value="0">All Categories</option>
           <option value="0">Computers</option>

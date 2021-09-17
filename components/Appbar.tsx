@@ -217,7 +217,7 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
   setNavOpen,
 }) => {
   return (
-    <div className="xl:px-container sticky top-0 bg-white z-30 shadow-2xl px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between xl:shadow-none select-none w-screen text-gray-500">
+    <div className="xl:px-container shadow-2xl px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between xl:shadow-none select-none w-screen text-gray-500">
       <div className="w-36 self-center hidden xl:block">
         <Image
           src="/images/logo-dark.png"
@@ -236,7 +236,7 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
           layout="responsive"
         />
       </div>
-      <div className="w-3/5 ml-3 xl:flex hidden">
+      <div className="w-vw-50 ml-3 xl:flex hidden">
         <SearchBox />
       </div>
 
@@ -251,7 +251,7 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
         {menuIcon}
       </div>
 
-      <div className="flex items-center gap-2 ml-3 px-2 cursor-pointer">
+      <div className="flex items-center gap-2 ml-3 xl:ml-auto px-2 cursor-pointer">
         <Link href="#">
           <>
             <span>{personIcon}</span>
