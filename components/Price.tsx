@@ -5,6 +5,12 @@ const Price: FC<{ price: number; prevPrice?: number; noColor?: boolean }> = ({
   prevPrice,
   noColor,
 }) => {
+  const getBeforeDecimal = (price: number) => {
+    if (price.toString().includes(".")) {
+      return price.toString().slice(0, price.toString().indexOf("."));
+    }
+    return price.toString();
+  };
   const getDecimal = (price: number) =>
     price
       .toFixed(2)
@@ -13,7 +19,7 @@ const Price: FC<{ price: number; prevPrice?: number; noColor?: boolean }> = ({
   return (
     <>
       <span className={`${noColor ? "" : "text-blue-500"} text-sm`}>
-        ${price}
+        ${getBeforeDecimal(price)}
         <span className="text-xs">{getDecimal(price)}</span>
         {prevPrice && (
           <span className="ml-1 text-xs text-gray-500 line-through">

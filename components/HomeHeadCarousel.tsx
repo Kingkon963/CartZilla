@@ -8,9 +8,10 @@ const HomeHeadCarousel: React.FC = () => {
   return (
     <Carousel
       showStatus={false}
+      showThumbs={false}
+      showArrows={false}
       swipeable={true}
       emulateTouch={true}
-      showThumbs={false}
     >
       <div className="flex flex-col xl:flex-row h-full xl:justify-center xl:gap-7">
         <div className="xl:order-2 xl:flex-1 xl:self-center ">
