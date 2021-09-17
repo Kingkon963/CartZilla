@@ -25,6 +25,7 @@ import CompanySlides from "../components/CompanySlides";
 import keyGen from "../utils/genKey";
 import useWindowSize from "../hooks/useWindowSize";
 import LangCurrSelector from "../components/LangCurrSelector";
+import HomeHeadCarousel from "../components/HomeHeadCarousel";
 
 const TrendingProducts = [
   {
@@ -112,32 +113,8 @@ const TrendingProducts = [
 const Header: FC = () => {
   const Slider: FC = () => {
     return (
-      <div className="xl:order-2 xl:w-full xl:px-14 flex flex-col">
-        <div className="flex flex-col xl:flex-row h-full xl:justify-center xl:gap-7">
-          <div className="xl:order-2 xl:flex-1 xl:self-center ">
-            <Image
-              src="https://cartzilla.createx.studio/img/home/hero-slider/05.jpg"
-              alt=""
-              width="420"
-              height="430"
-              loading="eager"
-              layout="intrinsic"
-            />
-          </div>
-          <div className="flex flex-col flex-1 xl:flex-none xl:order-1 items-center xl:items-start  xl:justify-center justify-start gap-3 ">
-            <h1 className="text-2xl xl:text-4xl font-light  mt-4">
-              World of music with
-            </h1>
-            <h1 className="text-4xl xl:text-6xl font-medium text-gray-700">
-              Headphones
-            </h1>
-            <h3 className="text-xl font-light">Choose between top brands</h3>
-            <button className="bg-primary py-2 px-6 text-white rounded-md mt-3 shadow-lg">
-              Shop Now
-            </button>
-          </div>
-        </div>
-        <div className="text-center ">...</div>
+      <div className="xl:order-2 xl:w-full xl:px-14 flex flex-col overflow-x-scroll">
+        <HomeHeadCarousel />
       </div>
     );
   };
@@ -222,7 +199,7 @@ const Header: FC = () => {
     );
   };
   return (
-    <header className="flex flex-col xl:flex-row xl:px-container xl:py-12 bg-lightBlue px-2 w-full select-none">
+    <header className="flex flex-col xl:flex-row xl:px-container xl:py-12 bg-lightBlue px-2 w-full select-none gap-7 xl:gap-0">
       <Slider />
       <ProductTiles />
     </header>
