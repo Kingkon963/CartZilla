@@ -1,5 +1,12 @@
 import { FC, useState } from "react";
 import type { NextPage } from "next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faRocket,
+  faHandHoldingUsd,
+  faHeadphonesAlt,
+  faCreditCard,
+} from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
@@ -586,8 +593,8 @@ const Home: NextPage = () => {
           </button>
         </div>
 
-        <footer className="bg-secondary text-white px-3 xl:px-container py-10">
-          <div className="flex flex-col xl:flex-row gap-7">
+        <footer className=" text-white">
+          <div className="flex flex-col xl:flex-row gap-7 bg-secondary px-3 xl:px-container py-10">
             <div className="xl:w-4/12">
               <h1 className="text-lg mb-4">Shop departments</h1>
               <div className="flex flex-col gap-2">
@@ -724,7 +731,66 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          <div></div>
+          <div className="bg-secondaryDark px-3 xl:px-container">
+            <div className="flex gap-7 w-full py-10 border-b">
+              <span className="flex justify-center items-center gap-2 w-3/12">
+                <div className="w-2/12 text-center">
+                  <FontAwesomeIcon
+                    icon={faRocket}
+                    className="text-primary text-4xl"
+                  />
+                </div>
+                <div className="w-10/12">
+                  <h1>Fast and free delivery</h1>
+                  <h3 className="text-xs text-gray-400">
+                    Free delivery for all orders over $200
+                  </h3>
+                </div>
+              </span>
+              <span className="flex justify-center items-center gap-2 w-3/12">
+                <div className="w-2/12 text-center">
+                  <FontAwesomeIcon
+                    icon={faHandHoldingUsd}
+                    className="text-primary text-4xl"
+                  />
+                </div>
+                <div className="w-10/12">
+                  <h1>Money back gurantee</h1>
+                  <h3 className="text-xs text-gray-400">
+                    We return money within 30 days
+                  </h3>
+                </div>
+              </span>
+              <span className="flex justify-center items-center gap-2 w-3/12">
+                <div className="w-2/12 text-center">
+                  <FontAwesomeIcon
+                    icon={faHeadphonesAlt}
+                    className="text-primary text-4xl"
+                  />
+                </div>
+                <div className="w-10/12">
+                  <h1>24/7 customer support</h1>
+                  <h3 className="text-xs text-gray-400">
+                    Friendly 24/7 customer support
+                  </h3>
+                </div>
+              </span>
+              <span className="flex justify-center items-center gap-2 w-3/12">
+                <div className="w-2/12 text-center">
+                  <FontAwesomeIcon
+                    icon={faCreditCard}
+                    className="text-primary text-4xl"
+                  />
+                </div>
+                <div className="w-10/12">
+                  <h1>Secure online payment</h1>
+                  <h3 className="text-xs text-gray-400">
+                    We possess SSL/Secure certificate
+                  </h3>
+                </div>
+              </span>
+            </div>
+          </div>
         </footer>
       </Layout>
     </div>
