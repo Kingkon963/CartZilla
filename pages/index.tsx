@@ -7,6 +7,15 @@ import {
   faHeadphonesAlt,
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTwitter,
+  faFacebook,
+  faInstagram,
+  faPinterest,
+  faYoutube,
+  faApple,
+  faGooglePlay,
+} from "@fortawesome/free-brands-svg-icons";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
@@ -15,6 +24,7 @@ import Price from "../components/Price";
 import CompanySlides from "../components/CompanySlides";
 import keyGen from "../utils/genKey";
 import useWindowSize from "../hooks/useWindowSize";
+import LangCurrSelector from "../components/LangCurrSelector";
 
 const TrendingProducts = [
   {
@@ -713,15 +723,22 @@ const Home: NextPage = () => {
               <div>
                 <h1 className="text-lg mb-4">Download our app</h1>
                 <div className="flex items-stretch justify-start gap-3 xl:gap-7">
-                  <button className="flex justify-center items-center w-48 p-3 rounded-lg bg-secondaryDark">
-                    <div className="w-2/6">apple</div>
+                  <button className="flex justify-center items-center w-48 p-3 rounded-lg bg-secondaryDark hover:bg-gray-800">
+                    <div className="w-2/6">
+                      <FontAwesomeIcon icon={faApple} className="text-4xl" />
+                    </div>
                     <div className="w-4/6">
                       <h3 className="text-xs text-gray-400">Download on the</h3>
                       <h1 className="">App Store</h1>
                     </div>
                   </button>
-                  <button className="flex justify-center items-center w-48 p-3 rounded-lg bg-secondaryDark">
-                    <div className="w-2/6">google</div>
+                  <button className="flex justify-center items-center w-48 p-3 rounded-lg bg-secondaryDark hover:bg-gray-800">
+                    <div className="w-2/6">
+                      <FontAwesomeIcon
+                        icon={faGooglePlay}
+                        className="text-3xl"
+                      />
+                    </div>
                     <div className="w-4/6">
                       <h3 className="text-xs text-gray-400">Download on the</h3>
                       <h1 className="">Google Play</h1>
@@ -732,8 +749,8 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className="bg-secondaryDark px-3 xl:px-container">
-            <div className="flex gap-7 w-full py-10 border-b">
-              <span className="flex justify-center items-center gap-2 w-3/12">
+            <div className="flex flex-col xl:flex-row gap-7 w-full py-10 border-b">
+              <span className="flex justify-center items-center gap-2 xl:w-3/12">
                 <div className="w-2/12 text-center">
                   <FontAwesomeIcon
                     icon={faRocket}
@@ -747,7 +764,7 @@ const Home: NextPage = () => {
                   </h3>
                 </div>
               </span>
-              <span className="flex justify-center items-center gap-2 w-3/12">
+              <span className="flex justify-center items-center gap-2 xl:w-3/12">
                 <div className="w-2/12 text-center">
                   <FontAwesomeIcon
                     icon={faHandHoldingUsd}
@@ -761,7 +778,7 @@ const Home: NextPage = () => {
                   </h3>
                 </div>
               </span>
-              <span className="flex justify-center items-center gap-2 w-3/12">
+              <span className="flex justify-center items-center gap-2 xl:w-3/12">
                 <div className="w-2/12 text-center">
                   <FontAwesomeIcon
                     icon={faHeadphonesAlt}
@@ -775,7 +792,7 @@ const Home: NextPage = () => {
                   </h3>
                 </div>
               </span>
-              <span className="flex justify-center items-center gap-2 w-3/12">
+              <span className="flex justify-center items-center gap-2 xl:w-3/12">
                 <div className="w-2/12 text-center">
                   <FontAwesomeIcon
                     icon={faCreditCard}
@@ -789,6 +806,90 @@ const Home: NextPage = () => {
                   </h3>
                 </div>
               </span>
+            </div>
+            <div className="pt-10 pb-5">
+              <div className="flex flex-col xl:flex-row justify-between gap-5 xl:gap-0">
+                <div className="flex gap-5 items-stretch">
+                  <div className="w-32">
+                    <Image
+                      src="https://cartzilla.createx.studio/img/footer-logo-light.png"
+                      width="234"
+                      height="56"
+                      alt="logo-light"
+                    />
+                  </div>
+                  <div className="border border-gray-400 hover:bg-gray-500 p-2 px-3 rounded cursor-pointer">
+                    <LangCurrSelector up={true} />
+                  </div>
+                </div>
+                <div className="flex gap-2 xl:self-center  xl:ml-auto">
+                  <button className="text-sm px-2 py-1 bg-gray-500 rounded hover:text-blue-400 hover:bg-white duration-300">
+                    <FontAwesomeIcon icon={faTwitter} />
+                  </button>
+                  <button className="text-sm px-2 py-1 bg-gray-500 rounded hover:text-blue-600 hover:bg-white duration-300">
+                    <FontAwesomeIcon icon={faFacebook} />
+                  </button>
+                  <button className="text-sm px-2 py-1 bg-gray-500 rounded hover:text-blue-600 hover:bg-white duration-300">
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </button>
+                  <button className="text-sm px-2 py-1 bg-gray-500 rounded hover:text-red-600 hover:bg-white duration-300">
+                    <FontAwesomeIcon icon={faPinterest} />
+                  </button>
+                  <button className="text-sm px-2 py-1 bg-gray-500 rounded hover:text-red-600 hover:bg-white duration-300">
+                    <FontAwesomeIcon icon={faYoutube} />
+                  </button>
+                </div>
+                <div></div>
+              </div>
+            </div>
+            <div>
+              <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-5 xl:gap-0">
+                <div className="flex flex-col xl:flex-row gap-5">
+                  <a
+                    href="#"
+                    className="text-gray-400 text-sm hover:text-white duration-300"
+                  >
+                    Outlets
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-400 text-sm hover:text-white duration-300"
+                  >
+                    Affiiliates
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-400 text-sm hover:text-white duration-300"
+                  >
+                    Support
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-400 text-sm hover:text-white duration-300"
+                  >
+                    Privacy
+                  </a>
+                  <a
+                    href="#"
+                    className="text-gray-400 text-sm hover:text-white duration-300"
+                  >
+                    Terms of use
+                  </a>
+                </div>
+                <div className="xl:ml-auto w-48">
+                  <Image
+                    src="https://cartzilla.createx.studio/img/cards-alt.png"
+                    width="374"
+                    height="56"
+                    alt="cards"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="py-5">
+              <p className="text-xs text-gray-500 font-semibold">
+                © All rights reserved. Made by Createx Studio
+              </p>
             </div>
           </div>
         </footer>

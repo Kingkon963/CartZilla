@@ -1,104 +1,17 @@
 import React, { useState, FC, useEffect, RefObject, useRef } from "react";
 import Image from "next/image";
-
-function useOutsideAlerter(ref: RefObject<HTMLDivElement>, callback: Function) {
-  useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
-    function handleClickOutside(event: any) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        callback();
-      }
-    }
-
-    // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref, callback]);
-}
-
-const Dropdown: FC = () => {
-  return (
-    <select
-      name=""
-      id=""
-      className="border border-1 rounded-md outline-none w-28 h-8 focus:border-primary px-1"
-    >
-      <option value="1">$ USD</option>
-      <option value="2">€ EUR</option>
-    </select>
-  );
-};
-
-interface SelectorProps {
-  title: string | JSX.Element;
-}
-
-const Selector: React.FC<SelectorProps> = ({ children, title }) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const root = useRef(null);
-  useOutsideAlerter(root, () => setOpen(false));
-  return (
-    <div className="text-sm relative" ref={root}>
-      <span
-        className={`cursor-pointer hover:text-white duration-300  flex gap-1 items-center caret`}
-        onClick={() => setOpen(!open)}
-      >
-        {title}
-      </span>
-      {open && (
-        <div
-          className="absolute flex flex-col gap-2 rounded-md shadow-md top-6 bg-white text-black p-4 z-10"
-          onBlur={() => setOpen(false)}
-        >
-          {children}
-        </div>
-      )}
-    </div>
-  );
-};
+import Selector from "./Selector";
+import LangCurrSelector from "./LangCurrSelector";
 
 const Vr: FC = () => {
   return <hr className="w-5 ml-3 transform rotate-90 hidden xl:inline" />;
 };
-const LangSelectTitle = (
-  <>
-    <Image src="/images/flags/en.png" alt="flag" width="18" height="18" />
-    <span>Eng / $</span>
-  </>
-);
 
 const Topbar: React.FC = () => {
   return (
     <div className="bg-secondary text-gray-400 text-sm p-2 py-3 select-none w-screen">
       <div className="xl:px-container flex items-center">
-        <Selector title={LangSelectTitle}>
-          <Dropdown />
-          <div className="flex flex-col gap-2 mt-2">
-            <span className="flex gap-2 cursor-pointer hover:text-primary duration-300">
-              <Image
-                src="/images/flags/en.png"
-                alt="flag"
-                width="18"
-                height="18"
-              />
-              <span>US</span>
-            </span>
-            <span className="flex gap-2 cursor-pointer hover:text-primary duration-300">
-              <Image
-                src="/images/flags/fr.png"
-                alt="flag"
-                width="18"
-                height="18"
-              />
-              <span>Français</span>
-            </span>
-          </div>
-        </Selector>
+        <LangCurrSelector />
         <Vr />
         <span className="hidden xl:inline">Available 24/7 at</span>
         <a
