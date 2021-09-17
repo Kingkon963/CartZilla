@@ -217,7 +217,7 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
   setNavOpen,
 }) => {
   return (
-    <div className="xl:px-container px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between shadow-sm xl:shadow-none select-none w-screen text-gray-500">
+    <div className="xl:px-container sticky top-0 bg-white z-20 px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between shadow-sm xl:shadow-none select-none w-screen text-gray-500">
       <div className="w-36 self-center hidden xl:block">
         <Image
           src="/images/logo-dark.png"
