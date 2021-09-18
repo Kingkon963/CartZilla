@@ -69,7 +69,7 @@ const Layout: FC = ({ children }) => {
     }
   }, [ws]);
   return (
-    <div className="">
+    <div>
       <Topbar />
       <div className="sticky top-0 bg-white z-30">
         <Appbar setNavOpen={setNavOpen} />

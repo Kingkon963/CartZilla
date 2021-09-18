@@ -14,6 +14,7 @@ import Product from "../interfaces/Product";
 import CartItem from "../interfaces/CartItem";
 import { CartContext } from "../context/CartContext";
 import keyGen from "../utils/genKey";
+import useWindowSize from "../hooks/useWindowSize";
 
 const personIcon = (
   <svg
@@ -150,10 +151,9 @@ const Cart: FC = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   const cartContext = useContext(CartContext);
-  console.log("Cart running");
+  const ws = useWindowSize();
 
   useEffect(() => {
-    console.log("useEffect running");
     if (cartContext?.items) {
       let subTotal = 0;
       cartContext.items.forEach((item) => (subTotal += item.price));
@@ -162,13 +162,24 @@ const Cart: FC = () => {
     }
   }, [cartContext?.items, cartContext?.items?.length]);
 
+  const displayCaret = (): string => {
+    if (ws && ws.width && ws.breakpoints) {
+      if (ws.width >= ws.breakpoints.xl) {
+        return "caret";
+      }
+    }
+    return "";
+  };
+
   return (
     <div
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className="relative"
     >
-      <div className="flex items-center gap-2 ml-3 cursor-pointer caret">
+      <div
+        className={`flex items-center gap-2 ml-3 cursor-pointer ${displayCaret()}`}
+      >
         <CartIcon total={totalItems} />
         <div className="xl:flex hidden flex-col">
           <span className="text-xs text-gray-400">My Cart</span>
@@ -217,7 +228,7 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
   setNavOpen,
 }) => {
   return (
-    <div className="xl:px-container shadow-2xl px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between xl:shadow-none select-none w-screen text-gray-500">
+    <div className="xl:px-container xxl:px-containerXXL shadow-2xl px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between xl:shadow-none select-none w-screen text-gray-500">
       <div className="w-36 self-center hidden xl:block">
         <Image
           src="/images/logo-dark.png"
@@ -255,7 +266,7 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
         <Link href="#">
           <>
             <span>{personIcon}</span>
-            <div className="xl:flex hidden flex-col">
+            <div className="xl:flex hidden flex-col xl:w-24">
               <span className="text-xs text-gray-400">Hello, Sign in</span>
               <span className="text-base leading-none">My Account</span>
             </div>

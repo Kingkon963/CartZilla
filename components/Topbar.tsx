@@ -10,7 +10,7 @@ const Vr: FC = () => {
 const Topbar: React.FC = () => {
   return (
     <div className="bg-secondary text-gray-400 text-sm p-2 py-3 select-none w-screen">
-      <div className="xl:px-container flex items-center">
+      <div className="xl:px-container xxl:px-containerXXL flex items-center">
         <LangCurrSelector />
         <Vr />
         <span className="hidden xl:inline">Available 24/7 at</span>

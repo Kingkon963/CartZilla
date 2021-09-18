@@ -7,6 +7,7 @@ module.exports = {
       md: "768px",
       lg: "976px",
       xl: "1440px",
+      xxl: "1600px",
     },
     extend: {
       colors: {
@@ -17,6 +18,7 @@ module.exports = {
       },
       spacing: {
         container: "8rem",
+        containerXXL: "20.5rem",
         menu: "26rem",
         sidebar: "35rem",
         42: "10.5rem",
@@ -28,6 +30,7 @@ module.exports = {
         "vh-45": "45vh",
         "vh-50": "50vh",
         "vh-75": "75vh",
+        maxW: "1260px",
       },
     },
   },

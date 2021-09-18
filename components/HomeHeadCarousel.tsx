@@ -13,7 +13,7 @@ const HomeHeadCarousel: React.FC = () => {
       swipeable={true}
       emulateTouch={true}
     >
-      <div className="flex flex-col xl:flex-row h-full xl:justify-center xl:gap-7">
+      <div className="flex flex-col xl:flex-row h-full xl:justify-center xl:gap-7 pb-10">
         <div className="xl:order-2 xl:flex-1 xl:self-center ">
           <Image
             src="https://cartzilla.createx.studio/img/home/hero-slider/05.jpg"

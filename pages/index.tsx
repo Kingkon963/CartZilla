@@ -90,7 +90,7 @@ const Header: FC = () => {
 
     return (
       <div className="w-full xl:w-96 overflow-scroll xl:overflow-hidden xl:order-1 xl:px-5">
-        <div className="flex xl:flex-col gap-3 ">
+        <div className="flex xl:flex-col gap-3 justify-center">
           {data.map((tile) => {
             const key = tile.color as keyof typeof COLORS;
             const color = COLORS[key];
@@ -128,7 +128,7 @@ const Header: FC = () => {
     );
   };
   return (
-    <header className="flex flex-col xl:flex-row xl:px-container xl:py-12 bg-lightBlue px-2 w-full select-none gap-7 xl:gap-0">
+    <header className="flex flex-col xl:flex-row xl:px-container xxl:px-containerXXL xl:py-12 bg-lightBlue px-2 w-full select-none gap-7 xl:gap-0">
       <Slider />
       <ProductTiles />
     </header>
@@ -283,7 +283,7 @@ const Home: NextPage = () => {
       <Layout>
         <Header />
         {/* Trending Products */}
-        <div className="w-full px-3 xl:px-container mt-12 ">
+        <div className="w-full px-3 xl:px-container xxl:px-containerXXL mt-12 ">
           <div className="flex justify-between border-b py-4 items-end">
             <div>
               <h1 className="text-2xl font-semibold text-gray-700 tracking-wide">
@@ -305,7 +305,7 @@ const Home: NextPage = () => {
         </div>
 
         {/* Limited Offer */}
-        <div className="xl:h-vh-50 px-3 xl:px-container mt-7">
+        <div className="xl:h-vh-50 px-3 xl:px-container xxl:px-containerXXL mt-7">
           <div
             className="w-full h-full flex flex-col xl:flex-row rounded"
             style={{ backgroundColor: "#EEF8FE" }}
@@ -346,14 +346,14 @@ const Home: NextPage = () => {
         </div>
 
         {/* Company Slides */}
-        <div className="px-3 xl:px-container mt-10">
+        <div className="px-3 xl:px-container xxl:px-containerXXL mt-10">
           <div className="cursor-pointer">
             <CompanySlides />
           </div>
         </div>
 
         {/* Items category */}
-        <div className="px-3 xl:px-container mt-10 ">
+        <div className="px-3 xl:px-container xxl:px-containerXXL mt-10 ">
           <ItemsCategory />
         </div>
 
@@ -400,7 +400,7 @@ const Home: NextPage = () => {
         </div>
 
         <footer className=" text-white">
-          <div className="flex flex-col xl:flex-row gap-7 bg-secondary px-3 xl:px-container py-10">
+          <div className="flex flex-col xl:flex-row gap-7 bg-secondary px-3 xl:px-container xxl:px-containerXXL py-10">
             <div className="xl:w-4/12">
               <h1 className="text-lg mb-4">Shop departments</h1>
               <div className="flex flex-col gap-2">
@@ -544,7 +544,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className="bg-secondaryDark px-3 xl:px-container">
+          <div className="bg-secondaryDark px-3 xl:px-container xxl:px-containerXXL">
             <div className="flex flex-col xl:flex-row gap-7 w-full py-10 border-b">
               <span className="flex justify-center items-center gap-2 xl:w-3/12">
                 <div className="w-2/12 text-center">

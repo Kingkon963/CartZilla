@@ -262,7 +262,7 @@ const Navbar: FC<{
 }> = ({ navOpen }) => {
   return (
     <nav
-      className={`px-2 xl:py-2 xl:px-container duration-500 select-none xl:text-gray-700 ${
+      className={`px-2 xl:py-2 xl:px-container xxl:px-containerXXL duration-500 select-none xl:text-gray-700 ${
         navOpen ? "flex flex-col h-auto" : "hidden h-0"
       } xl:flex xl:flex-row xl:items-center xl:h-auto gap-3`}
     >
