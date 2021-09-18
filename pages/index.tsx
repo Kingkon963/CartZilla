@@ -90,7 +90,7 @@ const Header: FC = () => {
 
     return (
       <div className="w-full xl:w-96 overflow-scroll xl:overflow-hidden xl:order-1 xl:px-5">
-        <div className="flex xl:flex-col gap-3 justify-center">
+        <div className="flex xl:flex-col gap-3 lg:justify-center">
           {data.map((tile) => {
             const key = tile.color as keyof typeof COLORS;
             const color = COLORS[key];
