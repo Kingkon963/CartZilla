@@ -11,7 +11,6 @@ import keyGen from "../utils/genKey";
 
 import HomeHeadCarousel from "../components/HomeHeadCarousel";
 import TrendingProducts from "../data/trandingProducts";
-import Footer from "../components/Footer";
 
 const Header: FC = () => {
   const Slider: FC = () => {
@@ -387,7 +386,6 @@ const Home: NextPage = () => {
         </div>
 
         <ReadTheBlog />
-        <Footer />
       </Layout>
     </div>
   );

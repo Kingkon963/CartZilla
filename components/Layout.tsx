@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
-import tailwind from "../tailwind.config";
 import Appbar from "./Appbar";
 import Topbar from "./Topbar";
 import Navbar from "./Navbar";
 import useWindowSize from "../hooks/useWindowSize";
+import Footer from "../components/Footer";
 
 const BottomNavbar = () => {
   return (
@@ -76,7 +76,7 @@ const Layout: FC = ({ children }) => {
         <Navbar navOpen={navOpen} setNavOpen={setNavOpen} />
       </div>
       {children}
-
+      <Footer />
       {showBottomNav && <BottomNavbar />}
     </div>
   );
