@@ -126,7 +126,7 @@ const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="Your email"
-                className="bg-white outline-none text-black w-64"
+                className="bg-white outline-none text-black w-full"
               />
               <button className="bg-primary text-white rounded-r px-5">
                 Subscribe*

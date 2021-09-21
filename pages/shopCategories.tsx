@@ -18,7 +18,7 @@ const CategoryCard: FC<{ category: typeof shopCategories[0] }> = ({
   category,
 }) => {
   return (
-    <div className="w-96 rounded-lg text-gray-500 text-sm">
+    <div className="w-80 xxl:w-96 rounded-lg text-gray-500 text-sm">
       <div className="relative w-full h-56">
         <Image
           src={category.imgURL}
@@ -70,7 +70,7 @@ const PopularBrandCard: FC<{ brand: typeof popularBrands[0] }> = ({
 }) => {
   return (
     <Link href="#">
-      <div className="w-32 lg:w-72 h-32 shadow-lg flex justify-center items-center lg:p-16 cursor-pointer">
+      <div className="w-32 lg:w-48 xl:w-72 h-32 shadow-lg flex justify-center items-center lg:p-16 cursor-pointer">
         <Image src={brand.imgUrl} width={300} height={160} alt={brand.name} />
       </div>
     </Link>
@@ -80,14 +80,14 @@ const PopularBrandCard: FC<{ brand: typeof popularBrands[0] }> = ({
 const ShopCategories: NextPage = () => {
   return (
     <Layout>
-      <div className="bg-lightBlue xxl:px-containerXXL flex flex-col lg:flex-row justify-between items-center py-10 lg:py-0">
+      <div className="bg-lightBlue px-3 xl:px-container xxl:px-containerXXL flex flex-col lg:flex-row justify-between items-center py-10 lg:py-0">
         <h1 className="text-2xl lg:py-8 font-semibold order-2 lg:order-1 mt-3 lg:mt-0">
           Shop Categories
         </h1>
         <Breadcrumb />
       </div>
-      <div className="px-3 xxl:px-containerXXL py-10 select-none">
-        <div className="flex flex-wrap gap-10">
+      <div className="px-3 xl:px-container xxl:px-containerXXL py-10 select-none">
+        <div className="flex flex-wrap justify-center gap-10">
           {shopCategories.map((category) => {
             return <CategoryCard category={category} key={keyGen()} />;
           })}
