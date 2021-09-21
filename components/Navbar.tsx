@@ -12,6 +12,7 @@ import Price from "./Price";
 import SearchBox from "./SearchBox";
 import genKey from "../utils/genKey";
 import useWindowSize from "../hooks/useWindowSize";
+import { useRouter } from "next/dist/client/router";
 
 type DeptMenuItemType = typeof Departments[0];
 
@@ -158,6 +159,7 @@ const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const ws = useWindowSize();
+  const router = useRouter();
 
   useEffect(() => {
     if (!title) setOpen(true);
@@ -190,6 +192,7 @@ const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
           } `}
           onClick={() => {
             if (wsLessThanXL()) setOpen(!open);
+            else router.push("/shopCategories");
           }}
         >
           {title}
