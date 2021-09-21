@@ -1,81 +1,11 @@
-import { FC } from "react";
 import type { NextPage } from "next";
-import Image from "next/dist/client/image";
-import Link from "next/dist/client/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronCircleRight,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
 
 import Layout from "../components/Layout";
 import Breadcrumb from "../components/Breadcrumb";
-import { shopCategories, popularBrands } from "../data/shopCategories";
+import CategoryCard from "../components/shopCategories/CategoryCard";
+import PopularBrandCard from "../components/shopCategories/PopularBrandCard";
 import keyGen from "../utils/genKey";
-import { arrowRightCircle } from "../styles/utils/svgIcons";
-
-const CategoryCard: FC<{ category: typeof shopCategories[0] }> = ({
-  category,
-}) => {
-  return (
-    <div className="w-80 xxl:w-96 rounded-lg text-gray-500 text-sm">
-      <div className="relative w-full h-56">
-        <Image
-          src={category.imgURL}
-          alt=""
-          layout="fill"
-          className="rounded-xl"
-        />
-      </div>
-      <div className="px-5 pt-3">
-        <h1 className="font-semibold text-lg mb-2">{category.name}</h1>
-        <div className="flex flex-col gap-2 h-40 text-sm">
-          {category.subCats.slice(0, 6).map((subCat) => {
-            return (
-              <div
-                className="flex justify-between cursor-pointer hover:text-primary duration-300"
-                key={keyGen()}
-              >
-                <span className="flex gap-1 items-center">
-                  <span>{arrowRightCircle}</span>
-                  {subCat.name}
-                </span>
-                <span>{subCat.total}</span>
-              </div>
-            );
-          })}
-        </div>
-        <div
-          className={`text-sm ${
-            category.subCats.length > 6 ? "visible" : "invisible"
-          }`}
-        >
-          ...
-        </div>
-        <hr className="my-3" />
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <span>{arrowRightCircle}</span>
-            <span>View All</span>
-          </div>
-          <span>{category.totalItems.toLocaleString()}</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const PopularBrandCard: FC<{ brand: typeof popularBrands[0] }> = ({
-  brand,
-}) => {
-  return (
-    <Link href="#">
-      <div className="w-32 lg:w-48 xl:w-72 h-32 shadow-lg flex justify-center items-center lg:p-16 cursor-pointer">
-        <Image src={brand.imgUrl} width={300} height={160} alt={brand.name} />
-      </div>
-    </Link>
-  );
-};
+import { shopCategories, popularBrands } from "../data/shopCategories";
 
 const ShopCategories: NextPage = () => {
   return (
