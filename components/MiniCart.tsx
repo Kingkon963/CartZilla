@@ -100,8 +100,8 @@ const MiniCart: FC = () => {
   }, [cartContext?.items, cartContext?.items?.length]);
 
   const displayCaret = (): string => {
-    if (ws && ws.width && ws.breakpoints) {
-      if (ws.width >= ws.breakpoints.xl) {
+    if (ws && ws.width && ws.breakpoints && cartContext && cartContext.items) {
+      if (ws.width >= ws.breakpoints.xl && cartContext?.items?.length > 0) {
         return "caret";
       }
     }
