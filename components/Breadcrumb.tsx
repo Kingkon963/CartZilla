@@ -3,9 +3,24 @@ import Link from "next/dist/client/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
-const Breadcrumb: FC = () => {
+interface Props {
+  dark?: boolean;
+  links: [
+    {
+      title: string;
+      url: string;
+    }
+  ];
+  currentPage: string;
+}
+
+const Breadcrumb: FC<Props> = ({ dark, currentPage, links }) => {
   return (
-    <div className="flex gap-3 text-gray-600 order-1 lg:order-2 text-sm">
+    <div
+      className={`flex gap-3 ${
+        !dark ? "text-gray-600" : "text-gray-200"
+      }  order-1 lg:order-2 text-sm`}
+    >
       <span>
         <Link href="/">
           <div className="cursor-pointer">
@@ -13,12 +28,20 @@ const Breadcrumb: FC = () => {
           </div>
         </Link>
       </span>
-      <span>{">"}</span>
-      <span>
-        <Link href="#">Shop</Link>
+      {links.map((link) => {
+        return (
+          <>
+            <span>{">"}</span>
+            <span>
+              <Link href={link.url}>{link.title}</Link>
+            </span>
+            <span>{">"}</span>
+          </>
+        );
+      })}
+      <span className={`${!dark ? "text-gray-500" : "text-gray-400"}`}>
+        {currentPage}
       </span>
-      <span>{">"}</span>
-      <span className="text-gray-500">Categories</span>
     </div>
   );
 };

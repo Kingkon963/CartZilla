@@ -1,5 +1,6 @@
 import { FC, useContext, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/dist/client/router";
 import Price from "../components/Price";
 import useWindowSize from "../hooks/useWindowSize";
 import TrendingProducts from "../data/trandingProducts";
@@ -9,6 +10,7 @@ import { CartContext } from "../context/CartContext";
 const ProductCard: FC<{ product: Product }> = ({ product }) => {
   const [open, setOpen] = useState(false);
   const cartContext = useContext(CartContext);
+  const router = useRouter();
   const ws = useWindowSize();
   const handleHover = () => {
     if (ws && ws.width && ws.breakpoints) {
@@ -81,7 +83,10 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
       </div>
       <div className="pt-3 flex flex-col xl:relative bg-white">
         <div className="text-xs text-gray-500 px-5">{product.cat}</div>
-        <div className="hover:text-primary duration-300 cursor-pointer px-5">
+        <div
+          className="hover:text-primary duration-300 cursor-pointer px-5"
+          onClick={() => router.push("/singleproduct")}
+        >
           {product.title}
         </div>
         <div className="flex justify-between items-end mt-1 px-5">
