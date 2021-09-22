@@ -152,9 +152,10 @@ const DeptMenu: FC = () => {
   );
 };
 
-const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
+const Menu: FC<{ title?: string; url?: string; sideMenu?: boolean }> = ({
   children,
   title,
+  url,
   sideMenu = false,
 }) => {
   const [open, setOpen] = useState(false);
@@ -192,7 +193,9 @@ const Menu: FC<{ title?: string; sideMenu?: boolean }> = ({
           } `}
           onClick={() => {
             if (wsLessThanXL()) setOpen(!open);
-            else router.push("/shopCategories");
+            else {
+              if (url) router.push(url);
+            }
           }}
         >
           {title}
@@ -216,7 +219,7 @@ const HomeMenu: FC = () => {
 
   return (
     <div>
-      <Menu title="Home">
+      <Menu title="Home" url="/">
         <div className="xl:flex xl:flex-row xl:items-stretch xl:w-vw-50">
           <div className="xl:h-96 xl:shadow-md ">
             {Home.map((item) => {
@@ -275,7 +278,7 @@ const Navbar: FC<{
       <DeptMenu />
       <Vr />
       <HomeMenu />
-      <Menu title="Shop">
+      <Menu title="Shop" url="/shopcategories">
         <div
           className={`py-2 px-4 bg-gray-100 xl:bg-white xl:w-vw-35 xl:h-vh-50 xl:flex xl:flex-col xl:flex-wrap xl:shadow-md`}
         >
