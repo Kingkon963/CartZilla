@@ -30,7 +30,7 @@ const SingleProduct: NextPage = () => {
       </div>
 
       <div className="px-3 xl:px-container xxl:px-containerXXL -mt-16 mb-96">
-        <div className="bg-white rounded-lg h-vh-50 shadow-lg p-1">
+        <div className="bg-white rounded-lg shadow-lg p-1">
           <TabNav
             titles={["General Info", "Tech Specs", "Reviews"]}
             components={[ProductView, TechSpecs, Reviews]}
