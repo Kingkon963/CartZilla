@@ -45,9 +45,9 @@ const CategoryCard: FC<{ category: typeof shopCategories[0] }> = ({
         </div>
         <hr className="my-3" />
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 hover:text-primary duration-300">
             <span>{arrowRightCircle}</span>
-            <span>View All</span>
+            <Link href="#">View All</Link>
           </div>
           <span>{category.totalItems.toLocaleString()}</span>
         </div>
