@@ -5,6 +5,9 @@ import type { NextPage } from "next";
 import Layout from "../components/Layout";
 import Breadcrumb from "../components/Breadcrumb";
 import TabNav from "../components/singleProduct/TabNav";
+import ProductView from "../components/singleProduct/ProductView";
+import TechSpecs from "../components/singleProduct/TechSpecs";
+import Reviews from "../components/singleProduct/Reviews";
 
 const SingleProduct: NextPage = () => {
   return (
@@ -30,7 +33,7 @@ const SingleProduct: NextPage = () => {
         <div className="bg-white rounded-lg h-vh-50 shadow-lg p-1">
           <TabNav
             titles={["General Info", "Tech Specs", "Reviews"]}
-            components={[]}
+            components={[ProductView, TechSpecs, Reviews]}
           />
         </div>
       </div>
