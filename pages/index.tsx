@@ -334,7 +334,7 @@ const Home: NextPage = () => {
         </div>
 
         {/* Limited Offer */}
-        <div className="xl:h-vh-50 px-3 xl:px-container xxl:px-containerXXL mt-7">
+        <div className="px-3 xl:px-container xxl:px-containerXXL mt-7">
           <LimitedOffer />
         </div>
 
