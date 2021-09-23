@@ -1,25 +1,10 @@
+import * as React from "react";
+import { FC, useState } from "react";
 import type { NextPage } from "next";
 
 import Layout from "../components/Layout";
 import Breadcrumb from "../components/Breadcrumb";
-import keyGen from "../utils/genKey";
-import { FC } from "react";
-
-interface TabNavProps {}
-const TabNav: FC = () => {
-  return (
-    <div>
-      <div className="flex items-stretch gap-7 px-5 border-b">
-        <span className="border-b border-primary text-primary h-16 flex items-center">
-          General Info
-        </span>
-        <span className="border-b duration-300 cursor-pointer hover:text-primary h-16 flex items-center">
-          Tech Specs
-        </span>
-      </div>
-    </div>
-  );
-};
+import TabNav from "../components/singleProduct/TabNav";
 
 const SingleProduct: NextPage = () => {
   return (
@@ -42,14 +27,11 @@ const SingleProduct: NextPage = () => {
       </div>
 
       <div className="px-3 xl:px-container xxl:px-containerXXL -mt-16 mb-96">
-        <div className="bg-white rounded-lg h-vh-50 shadow-lg">
-          {/* <TabNav>
-            <Tab>
-              <TabTitle></TabTitle>
-              <TabContent></TabContent>
-            </Tab>
-          </TabNav> */}
-          <TabNav />
+        <div className="bg-white rounded-lg h-vh-50 shadow-lg p-1">
+          <TabNav
+            titles={["General Info", "Tech Specs", "Reviews"]}
+            components={[]}
+          />
         </div>
       </div>
     </Layout>

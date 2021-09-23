@@ -2,6 +2,7 @@ import { FC } from "react";
 import Link from "next/dist/client/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import keyGen from "../utils/genKey";
 
 interface Props {
   dark?: boolean;
@@ -30,13 +31,13 @@ const Breadcrumb: FC<Props> = ({ dark, currentPage, links }) => {
       </span>
       {links.map((link) => {
         return (
-          <>
+          <span className="flex gap-3" key={keyGen()}>
             <span>{">"}</span>
             <span>
               <Link href={link.url}>{link.title}</Link>
             </span>
             <span>{">"}</span>
-          </>
+          </span>
         );
       })}
       <span className={`${!dark ? "text-gray-500" : "text-gray-400"}`}>
