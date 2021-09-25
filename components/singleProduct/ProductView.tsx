@@ -2,37 +2,7 @@ import * as React from "react";
 import Image from "next/dist/client/image";
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
-
-const ProductData = {
-  thumbs: [
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/th05.jpg",
-    },
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/th06.jpg",
-    },
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/th07.jpg",
-    },
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/th08.jpg",
-    },
-  ],
-  images: [
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/05.jpg",
-    },
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/06.jpg",
-    },
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/07.jpg",
-    },
-    {
-      url: "https://cartzilla.createx.studio/img/shop/single/gallery/08.jpg",
-    },
-  ],
-};
+import ProductData from "../../data/ProductData";
 
 const ProductView: React.FC = () => {
   const [selectedImg, setSelectedImg] = React.useState(0);
@@ -58,7 +28,7 @@ const ProductView: React.FC = () => {
           );
         })}
       </div>
-      <div className="border w-5/12">
+      <div className="border w-6/12">
         <div className="relative w-full">
           <Image
             src={ProductData.images[selectedImg].url}
@@ -68,8 +38,58 @@ const ProductView: React.FC = () => {
           />
         </div>
       </div>
-      <div className="border flex-1">
-        <Price price={124.99} />
+      <div className="border flex-1 flex flex-col gap-3">
+        <Price price={124.99} size="2xl" />
+        {/* Color Picker */}
+        <div>
+          <h1 className="text-sm">
+            Color: <span className="text-gray-500">Dark blue/Black</span>
+          </h1>
+          <div className="flex items-center gap-4 mt-3">
+            <button
+              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+              style={{ backgroundColor: "#F25540" }}
+            ></button>
+            <button
+              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+              style={{ backgroundColor: "#65805B" }}
+            ></button>
+            <button
+              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+              style={{ backgroundColor: "#F5F5F5" }}
+            ></button>
+            <button
+              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+              style={{ backgroundColor: "#333333" }}
+            ></button>
+          </div>
+        </div>
+
+        <div className="flex gap-5">
+          <div className="">
+            <select name="quantity" className="w-20 select-primary">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4" selected>
+                4
+              </option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <button className="bg-primary text-white flex-1 rounded-md shadow-lg">
+            Add to Cart
+          </button>
+        </div>
+
+        <div className="flex gap-5">
+          <button className="bg-gray-200 text-gray-500 p-3 rounded-md flex-1">
+            Add to Wishlist
+          </button>
+          <button className="bg-gray-200 text-gray-500 p-3 rounded-md flex-1">
+            Compare
+          </button>
+        </div>
       </div>
     </div>
   );

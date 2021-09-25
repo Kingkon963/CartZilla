@@ -53,3 +53,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.select-primary {
+  @apply py-2 text-sm pl-2 outline-none cursor-pointer border-primary border rounded-md;
+}
