@@ -55,5 +55,5 @@ a {
 }
 
 .select-primary {
-  @apply py-2 text-sm pl-2 outline-none cursor-pointer border-primary border rounded-md;
+  @apply py-2 text-sm pl-2 outline-none cursor-pointer focus:border-primary border rounded-md;
 }

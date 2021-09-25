@@ -1,8 +1,120 @@
 import * as React from "react";
 import Image from "next/dist/client/image";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
 import ProductData from "../../data/ProductData";
+
+const AccordionPrductView: React.FC = () => {
+  const [expanded, setExpanded] = React.useState<string | false>("panel1");
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
+
+  return (
+    <div className="border rounded-md">
+      <Accordion
+        expanded={expanded === "panel1"}
+        onChange={handleChange("panel1")}
+        disableGutters
+        className="border-b-0 shadow-none"
+      >
+        <AccordionSummary
+          expandIcon={
+            <div className="bg-gray-200 rounded-full p-1">
+              <ExpandMoreIcon />
+            </div>
+          }
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+          sx={{
+            borderBottom: "1px solid lightgray",
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <LocalShippingIcon className="text-gray-500" />
+            <span className="hover:text-primary duration-300">
+              Shipping options
+            </span>
+          </div>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="text-sm">
+            <div className="flex justify-between border-b py-2">
+              <div>
+                <p>Local courier shipping</p>
+                <span className="text-gray-400">2 - 4 days</span>
+              </div>
+              <span>$16.50</span>
+            </div>
+
+            <div className="flex justify-between border-b py-2">
+              <div>
+                <p>Local courier shipping</p>
+                <span className="text-gray-400">2 - 4 days</span>
+              </div>
+              <span>$16.50</span>
+            </div>
+
+            <div className="flex justify-between py-2">
+              <div>
+                <p>Local courier shipping</p>
+                <span className="text-gray-400">2 - 4 days</span>
+              </div>
+              <span>$16.50</span>
+            </div>
+          </div>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion
+        expanded={expanded === "panel2"}
+        onChange={handleChange("panel2")}
+        disableGutters
+        className="border-b-0 shadow-none"
+      >
+        <AccordionSummary
+          expandIcon={
+            <div className="bg-gray-200 rounded-full p-1">
+              <ExpandMoreIcon />
+            </div>
+          }
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+          sx={{
+            borderBottom: "1px solid lightgray",
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <LocationOnIcon className="text-gray-500" />
+            <span className="hover:text-primary duration-300">
+              Find in local store
+            </span>
+          </div>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="p-3">
+            <select name="location" className="select-primary w-full">
+              <option value="Spain">Spain</option>
+              <option value="Australia" selected>
+                Australia
+              </option>
+              <option value="UK">UK</option>
+            </select>
+          </div>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  );
+};
 
 const ProductView: React.FC = () => {
   const [selectedImg, setSelectedImg] = React.useState(0);
@@ -17,11 +129,7 @@ const ProductView: React.FC = () => {
                 isSelected ? "opacity-100 border-primary" : ""
               }`}
               key={keyGen()}
-              onClick={() =>
-                setTimeout(() => {
-                  setSelectedImg(_indx);
-                }, 100)
-              }
+              onClick={() => setSelectedImg(_indx)}
             >
               <Image src={th.url} alt="" width={156} height={156} />
             </div>
@@ -38,7 +146,7 @@ const ProductView: React.FC = () => {
           />
         </div>
       </div>
-      <div className="border flex-1 flex flex-col gap-3">
+      <div className=" flex-1 flex flex-col gap-10">
         <Price price={124.99} size="2xl" />
         {/* Color Picker */}
         <div>
@@ -67,7 +175,10 @@ const ProductView: React.FC = () => {
 
         <div className="flex gap-5">
           <div className="">
-            <select name="quantity" className="w-20 select-primary">
+            <select
+              name="quantity"
+              className="w-20 select-primary border-primary"
+            >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -77,7 +188,7 @@ const ProductView: React.FC = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <button className="bg-primary text-white flex-1 rounded-md shadow-lg">
+          <button className="bg-primary text-white flex-1 rounded-md shadow-lg hover:shadow-none">
             Add to Cart
           </button>
         </div>
@@ -89,6 +200,9 @@ const ProductView: React.FC = () => {
           <button className="bg-gray-200 text-gray-500 p-3 rounded-md flex-1">
             Compare
           </button>
+        </div>
+        <div>
+          <AccordionPrductView />
         </div>
       </div>
     </div>

@@ -220,7 +220,7 @@ const HomeMenu: FC = () => {
   return (
     <div>
       <Menu title="Home" url="/">
-        <div className="xl:flex xl:flex-row xl:items-stretch xl:w-vw-50">
+        <div className="xl:flex xl:flex-row xl:items-stretch ">
           <div className="xl:h-96 xl:shadow-md ">
             {Home.map((item) => {
               return (
