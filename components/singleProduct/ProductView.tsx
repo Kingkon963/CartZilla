@@ -131,8 +131,8 @@ const AccordionPrductView: React.FC = () => {
 const ProductView: React.FC = () => {
   const [selectedImg, setSelectedImg] = React.useState(0);
   return (
-    <div className="flex gap-10 p-5">
-      <div className="flex flex-col gap-2">
+    <div className="flex flex-col lg:flex-row gap-10 p-5 lg:p-10">
+      <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
         {ProductData.thumbs.map((th, _indx) => {
           const isSelected = _indx === selectedImg;
           return (
@@ -148,7 +148,8 @@ const ProductView: React.FC = () => {
           );
         })}
       </div>
-      <div className="border w-6/12">
+
+      <div className="border lg:w-6/12 order-1 lg:order-2">
         <div className="relative w-full">
           <Image
             src={ProductData.images[selectedImg].url}
@@ -158,7 +159,8 @@ const ProductView: React.FC = () => {
           />
         </div>
       </div>
-      <div className=" flex-1 flex flex-col gap-10">
+
+      <div className=" flex-1 flex flex-col gap-10 order-3">
         <Price price={124.99} size="3xl" />
         {/* Color Picker */}
         <div>
@@ -209,7 +211,8 @@ const ProductView: React.FC = () => {
         <div className="flex gap-5">
           <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
             <FavoriteBorderOutlinedIcon />
-            Add to Wishlist
+            <span className="hidden lg:inline-block">Add to Wishlist</span>
+            <span className="inline-block lg:hidden">Wishlist</span>
           </button>
           <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
             <CompareArrowsOutlinedIcon />
@@ -221,7 +224,7 @@ const ProductView: React.FC = () => {
         </div>
 
         {/* Social Buttons */}
-        <div className="flex gap-3 items-center text-sm">
+        <div className="flex flex-wrap gap-3 items-center text-sm">
           <span className="font-semibold text-gray-600">Share: </span>
           <button className="bg-blue-50 text-blue-400 flex gap-1 items-center px-2 py-1 rounded-md">
             <TwitterIcon className="text-lg" />

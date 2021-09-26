@@ -29,7 +29,7 @@ const SingleProduct: NextPage = () => {
         </span>
       </div>
 
-      <div className="px-3 xl:px-container xxl:px-containerXXL -mt-16 mb-96">
+      <div className="px-3 xl:px-container xxl:px-containerXXL -mt-8 lg:-mt-16 mb-96">
         <div className="bg-white rounded-lg shadow-lg p-1">
           <TabNav
             titles={["General Info", "Tech Specs", "Reviews"]}

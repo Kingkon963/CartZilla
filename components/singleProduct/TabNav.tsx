@@ -20,8 +20,8 @@ const TabNav: FC<TabNavProps> = ({ titles, components }) => {
           const isActive = (): boolean => active === _idx;
           return (
             <span
-              className={`border-b ${
-                isActive() ? "border-primary text-primary" : ""
+              className={`${
+                isActive() ? "border-b border-primary text-primary" : ""
               } h-16 flex items-center cursor-pointer`}
               key={keyGen()}
               onClick={() => setActive(_idx)}
