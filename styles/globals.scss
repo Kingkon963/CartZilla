@@ -57,3 +57,7 @@ a {
 .select-primary {
   @apply py-2 text-sm pl-2 outline-none cursor-pointer focus:border-primary border rounded-md;
 }
+
+.flex-center {
+  @apply flex justify-center items-center;
+}

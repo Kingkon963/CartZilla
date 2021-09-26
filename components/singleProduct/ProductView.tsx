@@ -9,6 +9,9 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
@@ -197,16 +200,19 @@ const ProductView: React.FC = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <button className="bg-primary text-white flex-1 rounded-md shadow-lg hover:shadow-none">
+          <button className="bg-primary text-white flex-1 flex-center gap-1 rounded-md shadow-lg hover:shadow-none py-2 ">
+            <ShoppingCartOutlinedIcon />
             Add to Cart
           </button>
         </div>
 
         <div className="flex gap-5">
-          <button className="bg-gray-200 text-gray-500 p-3 rounded-md flex-1">
+          <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
+            <FavoriteBorderOutlinedIcon />
             Add to Wishlist
           </button>
-          <button className="bg-gray-200 text-gray-500 p-3 rounded-md flex-1">
+          <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
+            <CompareArrowsOutlinedIcon />
             Compare
           </button>
         </div>
