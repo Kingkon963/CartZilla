@@ -4,8 +4,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
@@ -26,6 +29,9 @@ const AccordionPrductView: React.FC = () => {
         onChange={handleChange("panel1")}
         disableGutters
         className="border-b-0 shadow-none"
+        sx={{
+          boxShadow: "none",
+        }}
       >
         <AccordionSummary
           expandIcon={
@@ -36,11 +42,11 @@ const AccordionPrductView: React.FC = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
           sx={{
-            borderBottom: "1px solid lightgray",
+            borderBottom: "1px solid #E5E7EB",
           }}
         >
           <div className="flex items-center gap-3">
-            <LocalShippingIcon className="text-gray-500" />
+            <LocalShippingOutlinedIcon className="text-gray-500" />
             <span className="hover:text-primary duration-300">
               Shipping options
             </span>
@@ -79,7 +85,10 @@ const AccordionPrductView: React.FC = () => {
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
         disableGutters
-        className="border-b-0 shadow-none"
+        sx={{
+          boxShadow: "none",
+          borderBottom: "0px",
+        }}
       >
         <AccordionSummary
           expandIcon={
@@ -90,11 +99,11 @@ const AccordionPrductView: React.FC = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
           sx={{
-            borderBottom: "1px solid lightgray",
+            borderBottom: "1px solid #E5E7EB",
           }}
         >
           <div className="flex items-center gap-3">
-            <LocationOnIcon className="text-gray-500" />
+            <LocationOnOutlinedIcon className="text-gray-500" />
             <span className="hover:text-primary duration-300">
               Find in local store
             </span>
@@ -147,7 +156,7 @@ const ProductView: React.FC = () => {
         </div>
       </div>
       <div className=" flex-1 flex flex-col gap-10">
-        <Price price={124.99} size="2xl" />
+        <Price price={124.99} size="3xl" />
         {/* Color Picker */}
         <div>
           <h1 className="text-sm">
@@ -203,6 +212,23 @@ const ProductView: React.FC = () => {
         </div>
         <div>
           <AccordionPrductView />
+        </div>
+
+        {/* Social Buttons */}
+        <div className="flex gap-3 items-center text-sm">
+          <span className="font-semibold text-gray-600">Share: </span>
+          <button className="bg-blue-50 text-blue-400 flex gap-1 items-center px-2 py-1 rounded-md">
+            <TwitterIcon className="text-lg" />
+            Twitter
+          </button>
+          <button className="bg-purple-100 text-purple-500 flex gap-1 items-center px-2 py-1 rounded-md">
+            <InstagramIcon className="text-lg" />
+            Instagram
+          </button>
+          <button className="bg-blue-100 text-blue-500 flex gap-1 items-center px-2 py-1 rounded-md">
+            <FacebookIcon className="text-lg" />
+            Facebook
+          </button>
         </div>
       </div>
     </div>
