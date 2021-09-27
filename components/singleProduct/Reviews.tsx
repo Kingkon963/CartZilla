@@ -11,6 +11,7 @@ import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
 
 import Price from "../Price";
+import CommentForm from "./CommentForm";
 
 const Reviews: React.FC = () => {
   return (
@@ -156,7 +157,9 @@ const Reviews: React.FC = () => {
               <span className="flex-center text-gray-500">
                 <span>1</span>
                 <span className="-mt-1">
-                  <StarOutlinedIcon sx={{ fontSize: "16px" }} />
+                  <StarOutlinedIcon
+                    sx={{ fontSize: "16px", marginLeft: "3px" }}
+                  />
                 </span>
               </span>
               <div className="w-full mx-2">
@@ -177,9 +180,9 @@ const Reviews: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-full flex pt-5">
+      <div className="w-full flex flex-col gap-10 lg:gap-0 lg:flex-row pt-5">
         {/* Comments */}
-        <div className="w-7/12 px-5 flex flex-col">
+        <div className="lg:w-7/12 px-5 flex flex-col">
           <div className="flex items-center gap-2 ml-auto text-sm">
             <span className="text-gray-500">Sort by: </span>
             <select name="sort" className="select-primary">
@@ -191,10 +194,10 @@ const Reviews: React.FC = () => {
           </div>
 
           {/* Comment Card */}
-          <div className="py-5 border-b">
+          <div className="py-5 border-b text-sm lg:text-base">
             {/* Header */}
             <div className="flex gap-2">
-              <div>
+              <div className="w-28 lg:w-auto">
                 <Image
                   alt="Rafael Marquez"
                   src="https://cartzilla.createx.studio/img/shop/reviews/01.jpg"
@@ -205,23 +208,23 @@ const Reviews: React.FC = () => {
                   className="rounded-full"
                 />
               </div>
-              <div>
-                <div className="flex flex-wrap">
-                  <h1 className="text-md font-medium text-gray-600 w-4/12">
-                    Rafael Marquez
-                  </h1>
-                  <Rating
-                    value={4}
-                    size="small"
-                    className="mt-1  w-8/12"
-                    readOnly
-                  />
-                  <p className="text-xs text-gray-500 w-4/12">June 28, 2021</p>
-                  <p className="text-xs text-gray-500 w-8/12">
-                    83% of users found this review helpful
-                  </p>
-                </div>
-                <div></div>
+
+              <div className="flex flex-wrap">
+                <h1 className="text-md font-medium text-gray-600 w-full order-1 lg:w-4/12">
+                  Rafael Marquez
+                </h1>
+                <Rating
+                  value={4}
+                  size="small"
+                  className="mt-1 w-full order-3 lg:order-2 lg:w-8/12"
+                  readOnly
+                />
+                <p className="text-xs text-gray-500 order-2 lg:order-3 w-full lg:w-4/12">
+                  June 28, 2021
+                </p>
+                <p className="text-xs text-gray-500 order-4 w-full lg:w-8/12">
+                  83% of users found this review helpful
+                </p>
               </div>
             </div>
 
@@ -270,7 +273,9 @@ const Reviews: React.FC = () => {
         </div>
 
         {/* Comment Form */}
-        <div className="w-5/12 bg-blue-100">comment form</div>
+        <div className="lg:w-5/12 p-7 bg-gray-100 rounded-md">
+          <CommentForm />
+        </div>
       </div>
     </div>
   );
