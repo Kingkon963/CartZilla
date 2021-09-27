@@ -15,7 +15,7 @@ import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
-import ProductData from "../../data/ProductData";
+import { ProductData } from "../../data/ProductData";
 
 const AccordionPrductView: React.FC = () => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
