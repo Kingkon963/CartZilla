@@ -202,7 +202,7 @@ const ProductView: React.FC = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <button className="bg-primary text-white flex-1 flex-center gap-1 rounded-md shadow-lg hover:shadow-none py-2 ">
+          <button className="bg-primary text-white flex-1 flex-center gap-1 rounded-md shadow-lg hover:shadow-none duration-300 py-2 ">
             <ShoppingCartOutlinedIcon />
             Add to Cart
           </button>

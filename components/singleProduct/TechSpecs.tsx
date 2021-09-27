@@ -34,7 +34,7 @@ const TechSpecs: React.FC = () => {
             </option>
             <option value="5">5</option>
           </select>
-          <button className="bg-primary text-white flex-center gap-1 rounded-md shadow-lg hover:shadow-none px-7">
+          <button className="bg-primary text-white flex-center gap-1 rounded-md shadow-lg hover:shadow-none duration-300 px-7">
             <ShoppingCartOutlinedIcon />
             <span className="hidden lg:inline-block">Add to Cart</span>
           </button>
