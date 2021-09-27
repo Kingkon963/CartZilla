@@ -6,6 +6,9 @@ import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined
 import Rating from "@mui/material/Rating";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import LinearProgress from "@mui/material/LinearProgress";
+import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
 
 import Price from "../Price";
 
@@ -47,7 +50,7 @@ const Reviews: React.FC = () => {
           </button>
         </div>
       </div>
-
+      {/* Reivew Stats */}
       <div className="py-5 flex flex-col gap-5 lg:flex-row border-b">
         <div className="lg:w-4/12">
           <h1 className="text-2xl font-medium">74 Reviews</h1>
@@ -172,6 +175,102 @@ const Reviews: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="w-full flex pt-5">
+        {/* Comments */}
+        <div className="w-7/12 px-5 flex flex-col">
+          <div className="flex items-center gap-2 ml-auto text-sm">
+            <span className="text-gray-500">Sort by: </span>
+            <select name="sort" className="select-primary">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="highRating">High rating</option>
+              <option value="lowRating">Low rating</option>
+            </select>
+          </div>
+
+          {/* Comment Card */}
+          <div className="py-5 border-b">
+            {/* Header */}
+            <div className="flex gap-2">
+              <div>
+                <Image
+                  alt="Rafael Marquez"
+                  src="https://cartzilla.createx.studio/img/shop/reviews/01.jpg"
+                  width={48}
+                  height={48}
+                  placeholder="blur"
+                  blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8FithBQAE4wGHAbzqZQAAAABJRU5ErkJggg=="
+                  className="rounded-full"
+                />
+              </div>
+              <div>
+                <div className="flex flex-wrap">
+                  <h1 className="text-md font-medium text-gray-600 w-4/12">
+                    Rafael Marquez
+                  </h1>
+                  <Rating
+                    value={4}
+                    size="small"
+                    className="mt-1  w-8/12"
+                    readOnly
+                  />
+                  <p className="text-xs text-gray-500 w-4/12">June 28, 2021</p>
+                  <p className="text-xs text-gray-500 w-8/12">
+                    83% of users found this review helpful
+                  </p>
+                </div>
+                <div></div>
+              </div>
+            </div>
+
+            {/* Comment */}
+            <p className="text-gray-600 py-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+
+            {/* Pros and Cons */}
+            <div>
+              <p className="text-gray-600">
+                <span className="font-medium">Pros: </span>
+                <span className="">
+                  Consequuntur magni, voluptatem sequi, tempora
+                </span>
+              </p>
+              <p className="text-gray-600">
+                <span className="font-medium">Cons: </span>
+                <span className="">Architecto beatae, quis autem</span>
+              </p>
+            </div>
+
+            {/* Reactions */}
+            <div className="flex mt-5">
+              <button className="border-r-2 border-gray-300 pr-2">
+                <ThumbUpAltOutlinedIcon color="success" />
+                <span className="ml-1 text-gray-500">15</span>
+              </button>
+              <button className="pl-2">
+                <ThumbDownOutlinedIcon color="error" />
+                <span className="ml-1 text-gray-500">3</span>
+              </button>
+            </div>
+          </div>
+
+          <button
+            className="border p-3 px-7 rounded-md mt-5 self-center border-purple-400 text-purple-500
+          hover:bg-purple-400 hover:text-white duration-300"
+          >
+            <RefreshOutlinedIcon className="mr-2" />
+            Load more reviews
+          </button>
+        </div>
+
+        {/* Comment Form */}
+        <div className="w-5/12 bg-blue-100">comment form</div>
       </div>
     </div>
   );
