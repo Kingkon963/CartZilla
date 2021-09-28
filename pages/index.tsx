@@ -328,7 +328,11 @@ const Home: NextPage = () => {
 
           <div className="mt-5 w-full flex flex-col gap-5 xl:gap-0 xl:flex-row flex-wrap">
             {TrendingProducts.map((product) => {
-              return <ProductCard product={product} key={keyGen()} />;
+              return (
+                <div className="xl:w-3/12" key={keyGen()}>
+                  <ProductCard product={product} />
+                </div>
+              );
             })}
           </div>
         </div>

@@ -6,22 +6,30 @@ import useWindowSize from "../hooks/useWindowSize";
 import TrendingProducts from "../data/trandingProducts";
 import Product from "../interfaces/Product";
 import { CartContext } from "../context/CartContext";
+import { Rating } from "@mui/material";
 
-const ProductCard: FC<{ product: Product }> = ({ product }) => {
+interface ProductCardProps {
+  product: Product;
+  disableHoverEffect?: boolean;
+}
+
+const ProductCard: FC<ProductCardProps> = ({ product, disableHoverEffect }) => {
   const [open, setOpen] = useState(false);
   const cartContext = useContext(CartContext);
   const router = useRouter();
   const ws = useWindowSize();
   const handleHover = () => {
     if (ws && ws.width && ws.breakpoints) {
-      if (ws.width >= ws.breakpoints.xl) {
+      if (ws.width >= ws.breakpoints.xl && !disableHoverEffect) {
         setOpen(!open);
       }
     }
   };
   return (
     <div
-      className={`xl:w-3/12 py-5 hover:shadow-2xl border-b last:border-b-0 xl:border-b-0 xl:relative ${
+      className={`py-5 ${
+        disableHoverEffect ? "" : "hover:shadow-2xl"
+      } border-b last:border-b-0 xl:border-b-0 xl:relative ${
         open ? "z-20" : ""
       }`}
       onMouseEnter={() => handleHover()}
@@ -81,7 +89,7 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
           layout="intrinsic"
         />
       </div>
-      <div className="pt-3 flex flex-col xl:relative bg-white">
+      <div className="pt-3 flex flex-col items-start xl:relative bg-white">
         <div className="text-xs text-gray-500 px-5">{product.cat}</div>
         <div
           className="hover:text-primary duration-300 cursor-pointer px-5"
@@ -89,14 +97,18 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
         >
           {product.title}
         </div>
-        <div className="flex justify-between items-end mt-1 px-5">
+        <div className="flex justify-between items-center w-full mt-1 px-5">
           <div>
             {!product.out_of_stock && <Price price={product.price} />}
             {product.out_of_stock && (
               <span className="text-gray-500">Out of Stock</span>
             )}
           </div>
-          {!product.out_of_stock && <div>*****</div>}
+          {!product.out_of_stock && (
+            <div>
+              <Rating size="small" value={5} />
+            </div>
+          )}
         </div>
         {open && (
           <div className="self-stretch mt-2 hidden xl:block xl:absolute xl:top-full w-full px-5 bg-white shadow-2xl pb-1">
