@@ -54,6 +54,7 @@ const CommentForm: React.FC = () => {
           label="Rating"
           size="small"
           type="email"
+          defaultValue={5}
           sx={{
             "& > .MuiFormHelperText-root": {
               marginLeft: "3px",

@@ -25,13 +25,15 @@ const TechSpecs: React.FC = () => {
         </div>
 
         <div className="lg:ml-auto flex gap-3">
-          <select name="quantity" className="w-20 select-primary">
+          <select
+            name="quantity"
+            className="w-20 select-primary"
+            defaultValue={4}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>
-              4
-            </option>
+            <option value="4">4</option>
             <option value="5">5</option>
           </select>
           <button className="bg-primary text-white flex-center gap-1 rounded-md shadow-lg hover:shadow-none duration-300 px-7">

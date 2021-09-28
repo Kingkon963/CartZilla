@@ -10,6 +10,7 @@ import ProductView from "../components/singleProduct/ProductView";
 import TechSpecs from "../components/singleProduct/TechSpecs";
 import Reviews from "../components/singleProduct/Reviews";
 import SuggestionCarousel from "../components/singleProduct/SuggestionCarousel";
+import CheaperCarousel from "../components/singleProduct/CheaperCarousel";
 
 const SingleProduct: NextPage = () => {
   return (
@@ -72,11 +73,22 @@ const SingleProduct: NextPage = () => {
         </div>
       </div>
 
-      <div className="px-3 xl:px-container xxl:px-containerXXL  mb-96">
+      <div className="px-3 xl:px-container xxl:px-containerXXL">
         <h1 className="w-full text-center text-gray-700 text-3xl font-medium py-10">
           You may also like
         </h1>
         <SuggestionCarousel />
+      </div>
+
+      <div className="px-3 xl:px-container xxl:px-containerXXL mt-14 mb-16">
+        <div className="border rounded-md ">
+          <h1 className="w-full text-center text-gray-700 text-3xl font-medium py-10">
+            Cheaper together
+          </h1>
+          <div>
+            <CheaperCarousel />
+          </div>
+        </div>
       </div>
     </Layout>
   );

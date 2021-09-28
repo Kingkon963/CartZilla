@@ -114,11 +114,13 @@ const AccordionPrductView: React.FC = () => {
         </AccordionSummary>
         <AccordionDetails>
           <div className="p-3">
-            <select name="location" className="select-primary w-full">
+            <select
+              name="location"
+              className="select-primary w-full"
+              defaultValue="Australia"
+            >
               <option value="Spain">Spain</option>
-              <option value="Australia" selected>
-                Australia
-              </option>
+              <option value="Australia">Australia</option>
               <option value="UK">UK</option>
             </select>
           </div>
@@ -149,7 +151,7 @@ const ProductView: React.FC = () => {
         })}
       </div>
 
-      <div className="border lg:w-6/12 order-1 lg:order-2">
+      <div className="lg:w-6/12 order-1 lg:order-2">
         <div className="relative w-full">
           <Image
             src={ProductData.images[selectedImg].url}
@@ -192,13 +194,12 @@ const ProductView: React.FC = () => {
             <select
               name="quantity"
               className="w-20 select-primary border-primary"
+              defaultValue={4}
             >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-              <option value="4" selected>
-                4
-              </option>
+              <option value="4">4</option>
               <option value="5">5</option>
             </select>
           </div>

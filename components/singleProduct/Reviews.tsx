@@ -30,13 +30,15 @@ const Reviews: React.FC = () => {
         </div>
 
         <div className="lg:ml-auto flex gap-3">
-          <select name="quantity" className="w-20 select-primary">
+          <select
+            name="quantity"
+            className="w-20 select-primary"
+            defaultValue={4}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>
-              4
-            </option>
+            <option value="4">4</option>
             <option value="5">5</option>
           </select>
           <button className="bg-primary text-white flex-center gap-1 rounded-md shadow-lg hover:shadow-none duration-300 px-7">
@@ -185,7 +187,11 @@ const Reviews: React.FC = () => {
         <div className="lg:w-7/12 px-5 flex flex-col">
           <div className="flex items-center gap-2 ml-auto text-sm">
             <span className="text-gray-500">Sort by: </span>
-            <select name="sort" className="select-primary">
+            <select
+              name="sort"
+              className="select-primary"
+              defaultValue="newest"
+            >
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
               <option value="highRating">High rating</option>
@@ -203,8 +209,6 @@ const Reviews: React.FC = () => {
                   src="https://cartzilla.createx.studio/img/shop/reviews/01.jpg"
                   width={48}
                   height={48}
-                  placeholder="blur"
-                  blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8FithBQAE4wGHAbzqZQAAAABJRU5ErkJggg=="
                   className="rounded-full"
                 />
               </div>
