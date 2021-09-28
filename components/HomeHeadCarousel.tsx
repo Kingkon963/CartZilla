@@ -12,6 +12,32 @@ const HomeHeadCarousel: React.FC = () => {
       showArrows={false}
       swipeable={true}
       emulateTouch={true}
+      renderIndicator={(onClickHandler, isSelected, index, label) => {
+        if (isSelected) {
+          return (
+            <li
+              className="inline-block w-6 rounded-md h-2 mx-1 duration-300"
+              style={{ background: "#FE696A" }}
+              aria-label={`Selected: ${label} ${index + 1}`}
+              title={`Selected: ${label} ${index + 1}`}
+            />
+          );
+        }
+        return (
+          <li
+            className="inline-block rounded-full w-2 h-2 mx-1 duration-300"
+            style={{ background: "#B6BCC5" }}
+            onClick={onClickHandler}
+            onKeyDown={onClickHandler}
+            value={index}
+            key={index}
+            role="button"
+            tabIndex={0}
+            title={`${label} ${index + 1}`}
+            aria-label={`${label} ${index + 1}`}
+          />
+        );
+      }}
     >
       <div className="flex flex-col xl:flex-row h-full xl:justify-center xl:gap-7 pb-10">
         <div className="xl:order-2 xl:flex-1 xl:self-center ">
