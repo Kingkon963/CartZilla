@@ -1,16 +1,24 @@
 const ProductData = {
   thumbs: [
     {
+      type: "img",
       url: "https://cartzilla.createx.studio/img/shop/single/gallery/th05.jpg",
     },
     {
+      type: "img",
       url: "https://cartzilla.createx.studio/img/shop/single/gallery/th06.jpg",
     },
     {
+      type: "img",
       url: "https://cartzilla.createx.studio/img/shop/single/gallery/th07.jpg",
     },
     {
+      type: "img",
       url: "https://cartzilla.createx.studio/img/shop/single/gallery/th08.jpg",
+    },
+    {
+      type: "video",
+      url: "https://www.youtube.com/watch?v=Sbvdc9gmAYM&ab_channel=GogiTech",
     },
   ],
   images: [

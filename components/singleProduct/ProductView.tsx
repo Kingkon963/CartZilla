@@ -13,7 +13,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
+import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import Drift from "drift-zoom";
+import DiplsayFullScreenVideo from "./DiplsayFullScreenVideo";
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
@@ -135,6 +137,7 @@ const AccordionPrductView: React.FC = () => {
 
 const ProductView: React.FC = () => {
   const [selectedImg, setSelectedImg] = React.useState(0);
+  const [selectedVideo, setSelectedVideo] = React.useState("");
   const zoomedImgRef = useRef(null);
   const ws = useWindowSize();
 
@@ -165,22 +168,46 @@ const ProductView: React.FC = () => {
     <div className="flex flex-col lg:flex-row gap-10 p-5 lg:p-10">
       <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
         {ProductData.thumbs.map((th, _indx) => {
-          const isSelected = _indx === selectedImg;
-          return (
-            <div
-              className={`relative w-20 border rounded-md cursor-pointer p-px opacity-70  hover:opacity-100 duration-300 ${
-                isSelected ? "opacity-100 border-primary" : ""
-              }`}
-              key={keyGen()}
-              onClick={() => setSelectedImg(_indx)}
-            >
-              <Image src={th.url} alt="" width={156} height={156} />
-            </div>
-          );
+          let isSelected = false;
+          if (th.type === "img") {
+            isSelected = _indx === selectedImg;
+            return (
+              <div
+                className={`relative w-20 border rounded-md cursor-pointer p-px opacity-70  hover:opacity-100 duration-300 ${
+                  isSelected ? "opacity-100 border-primary" : ""
+                }`}
+                key={keyGen()}
+                onClick={() => setSelectedImg(_indx)}
+              >
+                <Image src={th.url} alt="" width={156} height={156} />
+              </div>
+            );
+          } else if (th.type === "video") {
+            isSelected = th.url === selectedVideo;
+            return (
+              <div
+                className={`relative w-20 border rounded-md cursor-pointer p-5 flex-center opacity-70  hover:opacity-100 duration-300 ${
+                  isSelected ? "opacity-100 border-primary" : ""
+                }`}
+                key={keyGen()}
+                onClick={() => setSelectedVideo(th.url)}
+              >
+                <VideoLibraryIcon />
+              </div>
+            );
+          }
         })}
       </div>
 
       <div className="lg:w-6/12 relative order-1 lg:order-2 cursor-move">
+        {selectedVideo.length > 0 && (
+          <DiplsayFullScreenVideo
+            url={selectedVideo}
+            close={() => {
+              setSelectedVideo("");
+            }}
+          />
+        )}
         <div className="relative">
           <Image
             src={ProductData.images[selectedImg].url}
