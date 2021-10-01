@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRef, useEffect, createRef } from "react";
 import Image from "next/dist/client/image";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -12,10 +13,12 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
+import Drift from "drift-zoom";
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
 import { ProductData } from "../../data/ProductData";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const AccordionPrductView: React.FC = () => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
@@ -132,6 +135,32 @@ const AccordionPrductView: React.FC = () => {
 
 const ProductView: React.FC = () => {
   const [selectedImg, setSelectedImg] = React.useState(0);
+  const zoomedImgRef = useRef(null);
+  const ws = useWindowSize();
+
+  useEffect(() => {
+    console.log(document.querySelector("#productImg"));
+    const imgElement = document.querySelector<HTMLImageElement>("#productImg");
+    if (
+      imgElement &&
+      zoomedImgRef.current &&
+      ws &&
+      ws.width &&
+      ws.breakpoints &&
+      ws.width > ws.breakpoints?.lg
+    ) {
+      const drift = new Drift(imgElement, {
+        namespace: "drift-zoom",
+        paneContainer: zoomedImgRef.current,
+        showWhitespaceAtEdges: false,
+        zoomFactor: 3,
+        handleTouch: true,
+        touchBoundingBox: true,
+      });
+      drift.enable();
+    }
+  }, [ws]);
+
   return (
     <div className="flex flex-col lg:flex-row gap-10 p-5 lg:p-10">
       <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
@@ -151,15 +180,18 @@ const ProductView: React.FC = () => {
         })}
       </div>
 
-      <div className="lg:w-6/12 order-1 lg:order-2">
-        <div className="relative w-full">
+      <div className="lg:w-6/12 relative order-1 lg:order-2 cursor-move">
+        <div className="relative">
           <Image
             src={ProductData.images[selectedImg].url}
             alt=""
             width={764}
             height={905}
+            data-zoom={ProductData.images[selectedImg].url}
+            id="productImg"
           />
         </div>
+        <div className="top-0 left-0" ref={zoomedImgRef}></div>
       </div>
 
       <div className=" flex-1 flex flex-col gap-10 order-3">
