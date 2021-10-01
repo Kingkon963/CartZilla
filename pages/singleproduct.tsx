@@ -2,6 +2,7 @@ import * as React from "react";
 import { FC, useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/dist/client/image";
+import { Rating } from "@mui/material";
 
 import Layout from "../components/Layout";
 import Breadcrumb from "../components/Breadcrumb";
@@ -27,7 +28,9 @@ const SingleProduct: NextPage = () => {
           />
         </div>
         <span className="flex items-center justify-center lg:justify-start gap-2">
-          <span className="text-yellow-400">*****</span>
+          <span>
+            <Rating size="small" value={4} readOnly />
+          </span>
           <span className="text-sm">74 Reviews</span>
         </span>
       </div>

@@ -106,7 +106,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, disableHoverEffect }) => {
           </div>
           {!product.out_of_stock && (
             <div>
-              <Rating size="small" value={5} />
+              <Rating size="small" value={5} readOnly />
             </div>
           )}
         </div>
