@@ -1,12 +1,5 @@
 import * as React from "react";
-import Image from "next/dist/client/image";
-import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import TextField from "@mui/material/TextField";
-import { ClassNames } from "@emotion/react";
 import { MenuItem } from "@mui/material";
 
 const CommentForm: React.FC = () => {
