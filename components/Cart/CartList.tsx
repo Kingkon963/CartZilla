@@ -84,7 +84,7 @@ const CartList: React.FC = () => {
                   defaultValue={1}
                 />
                 <button className="text-primary text-sm  flex items-center">
-                  <CancelOutlinedIcon className="text-base" />
+                  <CancelOutlinedIcon sx={{ fontSize: "1rem" }} />
                   <span>Remove</span>
                 </button>
               </div>

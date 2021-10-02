@@ -146,7 +146,7 @@ const Cart: NextPage = () => {
         <div className="lg:w-8/12 flex justify-between items-center justify-self-end">
           <h1 className="font-medium text-lg">Products</h1>
           <button className="px-5 py-2 border rounded-md border-primary text-primary hover:bg-primary hover:text-white duration-300 text-xs">
-            <ArrowBackIosIcon className="text-base" />
+            <ArrowBackIosIcon sx={{ fontSize: "1rem" }} />
             Continue shopping
           </button>
         </div>
