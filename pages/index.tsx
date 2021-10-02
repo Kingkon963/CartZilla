@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+
 import styles from "../styles/Home.module.scss";
 import Layout from "../components/Layout";
 import Price from "../components/Price";
@@ -9,9 +10,9 @@ import CompanySlides from "../components/CompanySlides";
 import ProductCard from "../components/ProductCard";
 import LimitedOffer from "../components/LimitedOffer";
 import keyGen from "../utils/genKey";
-
 import HomeHeadCarousel from "../components/HomeHeadCarousel";
 import TrendingProducts from "../data/trandingProducts";
+import QuickViewModal from "../components/QuickViewModal";
 
 const Header: FC = () => {
   const Slider: FC = () => {
@@ -302,6 +303,8 @@ const ReadTheBlog: FC = () => {
 };
 
 const Home: NextPage = () => {
+  const [openQuickView, setOpenQuickView] = useState(false);
+
   return (
     <div className="w-screen">
       <Head>
@@ -311,6 +314,13 @@ const Home: NextPage = () => {
       </Head>
       <Layout>
         <Header />
+        {/* Quick View Modal */}
+        {openQuickView && (
+          <QuickViewModal
+            openQuickView={openQuickView}
+            setOpenQuickView={setOpenQuickView}
+          />
+        )}
         {/* Trending Products */}
         <div className="w-full px-3 xl:px-container xxl:px-containerXXL mt-12 ">
           <div className="flex justify-between border-b py-4 items-end">
@@ -330,7 +340,10 @@ const Home: NextPage = () => {
             {TrendingProducts.map((product) => {
               return (
                 <div className="xl:w-3/12" key={keyGen()}>
-                  <ProductCard product={product} />
+                  <ProductCard
+                    product={product}
+                    setOpenQuickView={setOpenQuickView}
+                  />
                 </div>
               );
             })}

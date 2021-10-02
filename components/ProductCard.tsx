@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { Dispatch, FC, SetStateAction, useContext, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 import Price from "../components/Price";
@@ -11,9 +11,14 @@ import { Rating } from "@mui/material";
 interface ProductCardProps {
   product: Product;
   disableHoverEffect?: boolean;
+  setOpenQuickView?: Dispatch<SetStateAction<boolean>>;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product, disableHoverEffect }) => {
+const ProductCard: FC<ProductCardProps> = ({
+  product,
+  disableHoverEffect,
+  setOpenQuickView,
+}) => {
   const [open, setOpen] = useState(false);
   const cartContext = useContext(CartContext);
   const router = useRouter();
@@ -125,7 +130,12 @@ const ProductCard: FC<ProductCardProps> = ({ product, disableHoverEffect }) => {
                 View Details
               </button>
             )}
-            <button className="bg-white text-gray-400 hover:text-primary duration-300 w-full py-2 text-sm">
+            <button
+              className="bg-white text-gray-400 hover:text-primary duration-300 w-full py-2 text-sm"
+              onClick={() => {
+                if (setOpenQuickView) setOpenQuickView(true);
+              }}
+            >
               Quick View
             </button>
           </div>

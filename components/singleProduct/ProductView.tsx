@@ -135,7 +135,11 @@ const AccordionPrductView: React.FC = () => {
   );
 };
 
-const ProductView: React.FC = () => {
+interface Props {
+  asModal?: boolean;
+}
+
+const ProductView: React.FC<Props> = ({ asModal }) => {
   const [selectedImg, setSelectedImg] = React.useState(0);
   const [selectedVideo, setSelectedVideo] = React.useState("");
   const zoomedImgRef = useRef(null);
@@ -165,7 +169,11 @@ const ProductView: React.FC = () => {
   }, [ws]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-10 p-5 lg:p-10">
+    <div
+      className={`flex flex-col lg:flex-row gap-10 p-5 lg:p-10 bg-white ${
+        asModal ? "rounded-lg outline-none border-0" : ""
+      }`}
+    >
       <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
         {ProductData.thumbs.map((th, _indx) => {
           let isSelected = false;
@@ -182,7 +190,7 @@ const ProductView: React.FC = () => {
                 <Image src={th.url} alt="" width={156} height={156} />
               </div>
             );
-          } else if (th.type === "video") {
+          } else if (th.type === "video" && !asModal) {
             isSelected = th.url === selectedVideo;
             return (
               <div
