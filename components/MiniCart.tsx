@@ -6,6 +6,7 @@ import CartItem from "../interfaces/CartItem";
 import { CartContext } from "../context/CartContext";
 import keyGen from "../utils/genKey";
 import useWindowSize from "../hooks/useWindowSize";
+import { useRouter } from "next/dist/client/router";
 
 const CartIcon: FC<{ total: number }> = ({ total }) => {
   return (
@@ -89,6 +90,7 @@ const MiniCart: FC = () => {
   const [totalItems, setTotalItems] = useState(0);
   const cartContext = useContext(CartContext);
   const ws = useWindowSize();
+  const router = useRouter();
 
   useEffect(() => {
     if (cartContext?.items) {
@@ -137,7 +139,10 @@ const MiniCart: FC = () => {
                 <Price price={subTotal} />
               </span>
             </div>
-            <button className="text-sm border rounded-md px-2 flex justify-center items-center gap-0 h-8 ">
+            <button
+              className="text-sm border rounded-md px-2 flex justify-center items-center gap-0 h-8"
+              onClick={() => router.push("/cart")}
+            >
               Expand Cart
               <svg
                 xmlns="http://www.w3.org/2000/svg"
