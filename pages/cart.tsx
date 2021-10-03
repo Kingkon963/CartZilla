@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FC, useState } from "react";
 import type { NextPage } from "next";
-import Image from "next/dist/client/image";
+import Link from "next/link";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -183,9 +183,11 @@ const Cart: NextPage = () => {
                 />
                 <AccordionCart />
               </div>
-              <button className="primary-btn w-full py-2">
-                Proceed to Checkout
-              </button>
+              <Link href="/checkout" passHref>
+                <button className="primary-btn w-full py-2">
+                  Proceed to Checkout
+                </button>
+              </Link>
             </div>
           </div>
         </div>
