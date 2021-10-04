@@ -11,11 +11,12 @@ import CartStepper from "../components/Cart/CartStepper";
 import StepperLabels from "../components/Cart/CartStepperLabels";
 import CartDetails from "../components/Cart/CartDetails";
 import CartShipping from "../components/Cart/CartShipping";
+import CartPayment from "../components/Cart/CartPayment";
 
 const Checkout: NextPage = () => {
   const [activeStep, setActiveStep] = useState(1);
 
-  const CartContents = [CartDetails, CartShipping];
+  const CartContents = [CartDetails, CartShipping, CartPayment];
 
   const Content = CartContents[activeStep - 1];
   return (

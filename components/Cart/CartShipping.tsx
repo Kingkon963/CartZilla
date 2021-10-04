@@ -1,9 +1,7 @@
 import * as React from "react";
 import { FC, useState } from "react";
-import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import Price from "../../components/Price";
 
-import CartList from "./CartList";
 import MiniCartItemComponent from "../MiniCartItemComponent";
 import keyGen from "../../utils/genKey";
 import cartItems from "../../data/cartData";
