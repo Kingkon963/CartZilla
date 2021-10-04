@@ -245,7 +245,13 @@ const AccordionPayment: React.FC = () => {
   );
 };
 
-const CartReview: FC = () => {
+const CartReview: FC<{
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ setActiveStep }) => {
+  const goPrevStep = () => {
+    setActiveStep((activeStep) => activeStep - 1);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row flex-wrap text-gray-600">
       <div className="lg:w-8/12 py-10">
@@ -309,7 +315,10 @@ const CartReview: FC = () => {
         </div>
       </div>
       <div className="lg:w-8/12 flex gap-7 mt-10">
-        <button className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md">
+        <button
+          className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md"
+          onClick={() => goPrevStep()}
+        >
           Back to payment
         </button>
         <button className="flex-1 primary-btn lg:py-3">Complete Order</button>

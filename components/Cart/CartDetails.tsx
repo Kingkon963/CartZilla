@@ -7,10 +7,13 @@ import Price from "../../components/Price";
 import MiniCartItemComponent from "../MiniCartItemComponent";
 import cartItems from "../../data/cartData";
 import keyGen from "../../utils/genKey";
+import { useRouter } from "next/dist/client/router";
 
 const CartDetails: FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
 }> = ({ setActiveStep }) => {
+  const router = useRouter();
+
   const goNextStep = () => {
     setActiveStep((activeStep) => activeStep + 1);
   };
@@ -181,7 +184,10 @@ const CartDetails: FC<{
         </div>
       </div>
       <div className="lg:w-8/12 flex gap-7 mt-10">
-        <button className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md">
+        <button
+          className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md"
+          onClick={() => router.push("/cart")}
+        >
           Back to Cart
         </button>
         <button className="flex-1 primary-btn lg:py-3" onClick={goNextStep}>

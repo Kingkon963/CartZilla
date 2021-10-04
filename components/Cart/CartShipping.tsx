@@ -6,7 +6,9 @@ import MiniCartItemComponent from "../MiniCartItemComponent";
 import keyGen from "../../utils/genKey";
 import cartItems from "../../data/cartData";
 
-const CartShipping: FC = () => {
+const CartShipping: FC<{
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ setActiveStep }) => {
   const [selectedMethod, setSelectedMethod] = useState("");
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement> | undefined
@@ -14,6 +16,14 @@ const CartShipping: FC = () => {
     if (event) {
       setSelectedMethod(event.currentTarget.name);
     }
+  };
+
+  const goPrevStep = () => {
+    setActiveStep((activeStep) => activeStep - 1);
+  };
+
+  const goNextStep = () => {
+    setActiveStep((activeStep) => activeStep + 1);
   };
 
   return (
@@ -306,10 +316,16 @@ const CartShipping: FC = () => {
         </div>
       </div>
       <div className="lg:w-8/12 flex gap-7 mt-10">
-        <button className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md">
-          Back to Cart
+        <button
+          className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md"
+          onClick={() => goPrevStep()}
+        >
+          Back to Addresses
         </button>
-        <button className="flex-1 primary-btn lg:py-3">
+        <button
+          className="flex-1 primary-btn lg:py-3"
+          onClick={() => goNextStep()}
+        >
           Proceed to Payment
         </button>
       </div>
