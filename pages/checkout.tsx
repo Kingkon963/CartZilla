@@ -12,6 +12,7 @@ import StepperLabels from "../components/Cart/CartStepperLabels";
 import CartDetails from "../components/Cart/CartDetails";
 import CartShipping from "../components/Cart/CartShipping";
 import CartPayment from "../components/Cart/CartPayment";
+import "card-react/lib/card.css";
 
 const Checkout: NextPage = () => {
   const [activeStep, setActiveStep] = useState(1);

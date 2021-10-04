@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.0.2",
+    "card-react": "^1.2.7",
     "drift-zoom": "^1.5.0",
     "next": "11.1.2",
     "react": "17.0.2",

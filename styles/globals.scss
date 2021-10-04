@@ -55,7 +55,7 @@ a {
 }
 
 .select-primary {
-  @apply py-2 text-sm pl-2 outline-none cursor-pointer focus:border-primary border rounded-md;
+  @apply py-2 text-sm pl-2 outline-none cursor-pointer bg-white focus:border-primary border rounded-md;
 }
 
 .flex-center {
@@ -66,7 +66,7 @@ a {
 }
 
 .primary-btn-outline {
-  @apply flex-center w-full border border-primary text-primary py-2 hover:bg-primary hover:text-white duration-300 rounded-md cursor-pointer;
+  @apply flex-center w-full border bg-white border-primary text-primary py-2 hover:bg-primary hover:text-white duration-300 rounded-md cursor-pointer;
 }
 
 .primary-link {

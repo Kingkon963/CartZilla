@@ -1,11 +1,12 @@
 import * as React from "react";
-import { FC, useState } from "react";
+import { FC } from "react";
 import Image from "next/dist/client/image";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
+import CardReactFormContainer from "card-react";
 
 import Price from "../../components/Price";
 import MiniCartItemComponent from "../MiniCartItemComponent";
@@ -62,6 +63,71 @@ const AccordionPayment: React.FC = () => {
                 layout="intrinsic"
               />
             </div>
+            <div className="">
+              <div id="card-wrapper" className="py-10"></div>
+              <CardReactFormContainer
+                // the id of the container element where you want to render the card element.
+                // the card component can be rendered anywhere (doesn't have to be in ReactCardFormContainer).
+                container="card-wrapper" // required
+                // an object contain the form inputs names.
+                // every input must have a unique name prop.
+                formInputsNames={{
+                  number: "CCnumber", // optional — default "number"
+                  expiry: "CCexpiry", // optional — default "expiry"
+                  cvc: "CCcvc", // optional — default "cvc"
+                  name: "CCname", // optional - default "name"
+                }}
+                // initial values to render in the card element
+                // initialValues={{
+                //   number: "4242424242424242", // optional — default •••• •••• •••• ••••
+                //   cvc: "123", // optional — default •••
+                //   expiry: "16/12", // optional — default ••/••
+                //   name: "Random Name", // optional — default FULL NAME
+                // }}
+                // the class name attribute to add to the input field and the corresponding part of the card element,
+                // when the input is valid/invalid.
+                classes={{
+                  valid: "valid-input", // optional — default 'jp-card-valid'
+                  invalid: "invalid-input", // optional — default 'jp-card-invalid'
+                }}
+                // specify whether you want to format the form inputs or not
+                formatting={true} // optional - default true
+              >
+                <form className="grid lg:grid-cols-2 gap-x-5 gap-y-3">
+                  <input
+                    className="primary-input"
+                    placeholder="Full name"
+                    type="text"
+                    name="CCname"
+                  />
+                  <input
+                    className="primary-input"
+                    placeholder="Card number"
+                    type="text"
+                    name="CCnumber"
+                  />
+                  <div className="grid grid-cols-2 gap-5">
+                    <input
+                      className="primary-input"
+                      placeholder="MM/YY"
+                      type="text"
+                      name="CCexpiry"
+                    />
+                    <input
+                      className="primary-input"
+                      placeholder="CVC"
+                      type="text"
+                      name="CCcvc"
+                    />
+                  </div>
+                  <input
+                    className="primary-btn-outline"
+                    type="submit"
+                    value="Submit"
+                  />
+                </form>
+              </CardReactFormContainer>
+            </div>
           </div>
         </AccordionDetails>
       </Accordion>
@@ -112,15 +178,6 @@ const AccordionPayment: React.FC = () => {
 };
 
 const CartPayment: FC = () => {
-  const [selectedMethod, setSelectedMethod] = useState("");
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement> | undefined
-  ) => {
-    if (event) {
-      setSelectedMethod(event.currentTarget.name);
-    }
-  };
-
   return (
     <div className="flex flex-col lg:flex-row flex-wrap text-gray-600">
       <div className="lg:w-8/12 py-10">
