@@ -10,9 +10,7 @@ interface TabNavProps {
 
 const TabNav: FC<TabNavProps> = ({ titles, components }) => {
   const [active, setActive] = useState(0);
-  let ActiveComponent = null;
-
-  if (active < components.length) ActiveComponent = components[active];
+  let ActiveComponent = components[active];
   return (
     <div className="h-full">
       <div className="flex items-stretch gap-7 px-5 border-b">
