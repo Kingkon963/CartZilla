@@ -4,6 +4,9 @@ import Image from "next/dist/client/image";
 import EditIcon from "@mui/icons-material/Edit";
 
 import Price from "../../components/Price";
+import MiniCartItemComponent from "../MiniCartItemComponent";
+import cartItems from "../../data/cartData";
+import keyGen from "../../utils/genKey";
 
 const CartDetails: FC = () => {
   return (
@@ -131,26 +134,44 @@ const CartDetails: FC = () => {
         </div>
       </div>
       <div className="lg:w-4/12 lg:pl-10 lg:-mt-16">
-        <div className="bg-white rounded-md shadow-lg py-7 px-10 flex-center flex-col gap-5">
-          <h1 className="font-medium">Subtotal</h1>
-          <Price price={265} size="2xl" noColor />
-          <hr className="w-full" />
-          <div className="w-full flex flex-col gap-3">
-            <label htmlFor="additionalComments" className="flex items-center">
-              <span className="text-xs bg-blue-400 text-white py-px px-2 rounded-sm mr-1">
-                Note
-              </span>
-              <span>Additional Comments</span>
-            </label>
-            <textarea
-              id="additionalComments"
-              className="primary-input"
-              rows={6}
-            />
+        <div className="bg-white rounded-md shadow-lg py-7 px-7 flex-center flex-col gap-5">
+          <h1 className="font-medium">Order summary</h1>
+          <div className="flex flex-col gap-3  w-full">
+            {cartItems.map((item) => {
+              return (
+                <MiniCartItemComponent
+                  item={item}
+                  key={keyGen()}
+                  hoverEffect={false}
+                />
+              );
+            })}
           </div>
-          <button className="primary-btn w-full py-2">
-            Proceed to Checkout
-          </button>
+          <div className="flex flex-col gap-2 w-full border-b pb-5 text-sm text-gray-500">
+            <span className=" flex justify-between">
+              <span>Subtotal:</span>
+              <Price price={265} noColor />
+            </span>
+            <span className=" flex justify-between">
+              <span>Shipping:</span>
+              {"_"}
+            </span>
+            <span className=" flex justify-between">
+              <span>Taxes:</span>
+              <Price price={9.5} noColor />
+            </span>
+            <span className=" flex justify-between">
+              <span>Discount:</span>
+              {"_"}
+            </span>
+          </div>
+          <Price price={274.5} noColor size="3xl" />
+          <input
+            className="primary-input"
+            type="text"
+            placeholder="Promo code"
+          />
+          <button className="primary-btn-outline">Apply promo code</button>
         </div>
       </div>
       <div className="lg:w-8/12 flex gap-7 mt-10">
