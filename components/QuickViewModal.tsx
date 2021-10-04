@@ -21,8 +21,8 @@ const QuickViewModal: FC<Props> = ({ openQuickView, setOpenQuickView }) => {
       }}
     >
       <Fade in={openQuickView}>
-        <div className="w-8/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md border-0 outline-none">
-          <ProductView asModal />
+        <div className="lg:w-10/12 xxl:w-8/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md border-0 outline-none">
+          <ProductView asModal setOpenQuickView={setOpenQuickView} />
         </div>
       </Fade>
     </Modal>

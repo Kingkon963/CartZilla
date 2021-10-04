@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef, useEffect, createRef } from "react";
+import { useRef, useEffect, Dispatch, SetStateAction } from "react";
 import Image from "next/dist/client/image";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -14,13 +14,18 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import CloseIcon from "@mui/icons-material/Close";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Drift from "drift-zoom";
 import DiplsayFullScreenVideo from "./DiplsayFullScreenVideo";
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
-import { ProductData } from "../../data/ProductData";
+import { Info, ProductData } from "../../data/ProductData";
 import useWindowSize from "../../hooks/useWindowSize";
+import { useRouter } from "next/dist/client/router";
+import { Rating } from "@mui/material";
 
 const AccordionPrductView: React.FC = () => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
@@ -137,12 +142,14 @@ const AccordionPrductView: React.FC = () => {
 
 interface Props {
   asModal?: boolean;
+  setOpenQuickView?: Dispatch<SetStateAction<boolean>>;
 }
 
-const ProductView: React.FC<Props> = ({ asModal }) => {
+const ProductView: React.FC<Props> = ({ asModal, setOpenQuickView }) => {
   const [selectedImg, setSelectedImg] = React.useState(0);
   const [selectedVideo, setSelectedVideo] = React.useState("");
   const zoomedImgRef = useRef(null);
+  const router = useRouter();
   const ws = useWindowSize();
 
   useEffect(() => {
@@ -168,144 +175,197 @@ const ProductView: React.FC<Props> = ({ asModal }) => {
     }
   }, [ws]);
 
+  const close = () => {
+    if (setOpenQuickView) setOpenQuickView(false);
+  };
+
   return (
-    <div
-      className={`flex flex-col lg:flex-row gap-10 p-5 lg:p-10 bg-white ${
-        asModal ? "rounded-lg outline-none border-0" : ""
-      }`}
-    >
-      <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
-        {ProductData.thumbs.map((th, _indx) => {
-          let isSelected = false;
-          if (th.type === "img") {
-            isSelected = _indx === selectedImg;
-            return (
-              <div
-                className={`relative w-20 border rounded-md cursor-pointer p-px opacity-70  hover:opacity-100 duration-300 ${
-                  isSelected ? "opacity-100 border-primary" : ""
-                }`}
-                key={keyGen()}
-                onClick={() => setSelectedImg(_indx)}
-              >
-                <Image src={th.url} alt="" width={156} height={156} />
-              </div>
-            );
-          } else if (th.type === "video" && !asModal) {
-            isSelected = th.url === selectedVideo;
-            return (
-              <div
-                className={`relative w-20 border rounded-md cursor-pointer p-5 flex-center opacity-70  hover:opacity-100 duration-300 ${
-                  isSelected ? "opacity-100 border-primary" : ""
-                }`}
-                key={keyGen()}
-                onClick={() => setSelectedVideo(th.url)}
-              >
-                <VideoLibraryIcon />
-              </div>
-            );
-          }
-        })}
-      </div>
-
-      <div className="lg:w-6/12 relative order-1 lg:order-2 cursor-move">
-        {selectedVideo.length > 0 && (
-          <DiplsayFullScreenVideo
-            url={selectedVideo}
-            close={() => {
-              setSelectedVideo("");
-            }}
-          />
-        )}
-        <div className="relative">
-          <Image
-            src={ProductData.images[selectedImg].url}
-            alt=""
-            width={764}
-            height={905}
-            data-zoom={ProductData.images[selectedImg].url}
-            id="productImg"
-          />
-        </div>
-        <div className="top-0 left-0" ref={zoomedImgRef}></div>
-      </div>
-
-      <div className=" flex-1 flex flex-col gap-10 order-3">
-        <Price price={124.99} size="3xl" />
-        {/* Color Picker */}
-        <div>
-          <h1 className="text-sm">
-            Color: <span className="text-gray-500">Dark blue/Black</span>
+    <div>
+      {asModal && (
+        <div className="w-full flex justify-between items-center border-b lg:px-10 lg:py-5 rounded-t-lg bg-white">
+          <h1
+            className="text-2xl hover:text-primary duration-300 cursor-pointer"
+            onClick={() => router.push("/singleproduct")}
+          >
+            Smartwatch Youth Edition <ArrowForwardIosIcon />
           </h1>
-          <div className="flex items-center gap-4 mt-3">
-            <button
-              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
-              style={{ backgroundColor: "#F25540" }}
-            ></button>
-            <button
-              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
-              style={{ backgroundColor: "#65805B" }}
-            ></button>
-            <button
-              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
-              style={{ backgroundColor: "#F5F5F5" }}
-            ></button>
-            <button
-              className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
-              style={{ backgroundColor: "#333333" }}
-            ></button>
+          <button onClick={() => close()}>
+            <CloseIcon />
+          </button>
+        </div>
+      )}
+      <div
+        className={`flex flex-col lg:flex-row lg:flex-wrap gap-10 p-5 lg:p-10 bg-white ${
+          asModal ? "rounded-b-lg outline-none border-0" : ""
+        }`}
+      >
+        <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
+          {ProductData.thumbs.map((th, _indx) => {
+            let isSelected = false;
+            if (th.type === "img") {
+              isSelected = _indx === selectedImg;
+              return (
+                <div
+                  className={`relative w-20 border rounded-md cursor-pointer p-px opacity-70  hover:opacity-100 duration-300 ${
+                    isSelected ? "opacity-100 border-primary" : ""
+                  }`}
+                  key={keyGen()}
+                  onClick={() => setSelectedImg(_indx)}
+                >
+                  <Image src={th.url} alt="" width={156} height={156} />
+                </div>
+              );
+            } else if (th.type === "video" && !asModal) {
+              isSelected = th.url === selectedVideo;
+              return (
+                <div
+                  className={`relative w-20 border rounded-md cursor-pointer p-5 flex-center opacity-70  hover:opacity-100 duration-300 ${
+                    isSelected ? "opacity-100 border-primary" : ""
+                  }`}
+                  key={keyGen()}
+                  onClick={() => setSelectedVideo(th.url)}
+                >
+                  <VideoLibraryIcon />
+                </div>
+              );
+            }
+          })}
+        </div>
+
+        <div className="lg:w-6/12 relative order-1 lg:order-2 cursor-move">
+          {selectedVideo.length > 0 && (
+            <DiplsayFullScreenVideo
+              url={selectedVideo}
+              close={() => {
+                setSelectedVideo("");
+              }}
+            />
+          )}
+          <div className="relative">
+            <Image
+              src={ProductData.images[selectedImg].url}
+              alt=""
+              width={764}
+              height={905}
+              data-zoom={ProductData.images[selectedImg].url}
+              id="productImg"
+            />
           </div>
+          <div className="top-0 left-0" ref={zoomedImgRef}></div>
         </div>
 
-        <div className="flex gap-5">
-          <div className="">
-            <select
-              name="quantity"
-              className="w-20 select-primary border-primary"
-              defaultValue={4}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+        <div className=" flex-1 flex flex-col gap-10 order-3">
+          <div className="flex items-center gap-2">
+            <Rating defaultValue={4} size="small" readOnly />
+            <span className="text-gray-400">74 Reviews</span>
           </div>
-          <button className="bg-primary text-white flex-1 flex-center gap-1 rounded-md shadow-lg hover:shadow-none duration-300 py-2 ">
-            <ShoppingCartOutlinedIcon />
-            Add to Cart
-          </button>
-        </div>
+          <Price price={124.99} size="3xl" />
+          {/* Color Picker */}
+          <div>
+            <h1 className="text-sm">
+              Color: <span className="text-gray-500">Dark blue/Black</span>
+            </h1>
+            <div className="flex items-center gap-4 mt-3">
+              <button
+                className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+                style={{ backgroundColor: "#F25540" }}
+              ></button>
+              <button
+                className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+                style={{ backgroundColor: "#65805B" }}
+              ></button>
+              <button
+                className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+                style={{ backgroundColor: "#F5F5F5" }}
+              ></button>
+              <button
+                className="w-6 h-6 ring-2 ring-gray-300 rounded-full"
+                style={{ backgroundColor: "#333333" }}
+              ></button>
+            </div>
+          </div>
 
-        <div className="flex gap-5">
-          <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
-            <FavoriteBorderOutlinedIcon />
-            <span className="hidden lg:inline-block">Add to Wishlist</span>
-            <span className="inline-block lg:hidden">Wishlist</span>
-          </button>
-          <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
-            <CompareArrowsOutlinedIcon />
-            Compare
-          </button>
-        </div>
-        <div>
-          <AccordionPrductView />
-        </div>
+          <div className="flex gap-5">
+            <div className="">
+              <select
+                name="quantity"
+                className="w-20 select-primary border-primary"
+                defaultValue={4}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <button className="bg-primary text-white flex-1 flex-center gap-1 rounded-md shadow-lg hover:shadow-none duration-300 py-2 ">
+              <ShoppingCartOutlinedIcon />
+              Add to Cart
+            </button>
+          </div>
 
-        {/* Social Buttons */}
-        <div className="flex flex-wrap gap-3 items-center text-sm">
-          <span className="font-semibold text-gray-600">Share: </span>
-          <button className="bg-blue-50 text-blue-400 flex gap-1 items-center px-2 py-1 rounded-md">
-            <TwitterIcon className="text-lg" />
-            Twitter
-          </button>
-          <button className="bg-purple-100 text-purple-500 flex gap-1 items-center px-2 py-1 rounded-md">
-            <InstagramIcon className="text-lg" />
-            Instagram
-          </button>
-          <button className="bg-blue-100 text-blue-500 flex gap-1 items-center px-2 py-1 rounded-md">
-            <FacebookIcon className="text-lg" />
-            Facebook
-          </button>
+          <div className="flex gap-5">
+            <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
+              <FavoriteBorderOutlinedIcon />
+              <span className="hidden lg:inline-block">Add to Wishlist</span>
+              <span className="inline-block lg:hidden">Wishlist</span>
+            </button>
+            <button className="bg-gray-200 hover:bg-gray-300 text-gray-500 p-3 rounded-md flex-1 flex-center gap-1">
+              <CompareArrowsOutlinedIcon />
+              Compare
+            </button>
+          </div>
+          {!asModal && (
+            <div>
+              <AccordionPrductView />
+            </div>
+          )}
+
+          {/* Social Buttons */}
+          {!asModal && (
+            <div className="flex flex-wrap gap-3 items-center text-sm">
+              <span className="font-semibold text-gray-600">Share: </span>
+              <button className="bg-blue-50 text-blue-400 flex gap-1 items-center px-2 py-1 rounded-md">
+                <TwitterIcon className="text-lg" />
+                Twitter
+              </button>
+              <button className="bg-purple-100 text-purple-500 flex gap-1 items-center px-2 py-1 rounded-md">
+                <InstagramIcon className="text-lg" />
+                Instagram
+              </button>
+              <button className="bg-blue-100 text-blue-500 flex gap-1 items-center px-2 py-1 rounded-md">
+                <FacebookIcon className="text-lg" />
+                Facebook
+              </button>
+            </div>
+          )}
+
+          {asModal && (
+            <div className="text-gray-500">
+              <h1 className="border-b pb-2">
+                <InfoOutlinedIcon /> Product info
+              </h1>
+              <div className="flex flex-col gap-3">
+                {Info.map((info) => {
+                  return (
+                    <div key={keyGen()}>
+                      <h1 className="font-medium my-2">{info.title}</h1>
+                      <ul className="list-disc ml-10">
+                        {info.list.map((pair) => {
+                          return (
+                            <li key={keyGen()}>
+                              {pair.key}: {pair.value}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

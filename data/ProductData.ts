@@ -146,4 +146,41 @@ const Specs = [
   },
 ];
 
-export { ProductData, Specs };
+const Info = [
+  {
+    title: "General",
+    list: [
+      {
+        key: "Model",
+        value: "Amazfit Smartwatch",
+      },
+      {
+        key: "Gender",
+        value: "Unisex",
+      },
+      {
+        key: "OS compitibility",
+        value: "Android / iOS",
+      },
+    ],
+  },
+  {
+    title: "Physical specs",
+    list: [
+      {
+        key: "Shape",
+        value: "Rectangular",
+      },
+      {
+        key: "Body matrial",
+        value: "Plastics / Ceramics",
+      },
+      {
+        key: "Band material",
+        value: "Silicone",
+      },
+    ],
+  },
+];
+
+export { ProductData, Specs, Info };
