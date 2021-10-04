@@ -6,7 +6,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
+import RedeemIcon from "@mui/icons-material/Redeem";
 import CardReactFormContainer from "card-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaypal } from "@fortawesome/free-brands-svg-icons";
 
 import Price from "../../components/Price";
 import MiniCartItemComponent from "../MiniCartItemComponent";
@@ -154,22 +157,86 @@ const AccordionPayment: React.FC = () => {
           }}
         >
           <div className="flex items-center gap-3">
-            <span className="hover:text-primary duration-300">
-              Find in local store
+            <span className="hover:text-primary duration-300 flex items-center gap-3">
+              <FontAwesomeIcon icon={faPaypal} className="text-2xl ml-1" />
+              <span className="font-medium">Pay with PayPal</span>
             </span>
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="p-3">
-            <select
-              name="location"
-              className="select-primary w-full"
-              defaultValue="Australia"
-            >
-              <option value="Spain">Spain</option>
-              <option value="Australia">Australia</option>
-              <option value="UK">UK</option>
-            </select>
+          <div className="text-sm text-gray-500 py-5">
+            <p className="text-sm">
+              <span className="font-medium">PayPal</span> - the safer, easier
+              way to pay
+            </p>
+            <div className="flex flex-col lg:flex-row gap-5 lg:gap-7 my-5">
+              <input
+                className="primary-input flex-1"
+                type="email"
+                name="paypalEmail"
+                id="paypalEmail"
+                placeholder="E-mail"
+              />
+              <input
+                className="primary-input flex-1"
+                type="password"
+                name="paypalPassword"
+                id="paypalPassword"
+                placeholder="Password"
+              />
+            </div>
+            <div className="flex justify-between items-baseline">
+              <a
+                className="hover:text-primary duration-300 cursor-pointer"
+                href="#"
+              >
+                Forget password?
+              </a>
+              <button className="primary-btn px-5 py-3">Login</button>
+            </div>
+          </div>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel3"}
+        onChange={handleChange("panel3")}
+        disableGutters
+        sx={{
+          boxShadow: "none",
+          borderBottom: "0px",
+        }}
+      >
+        <AccordionSummary
+          expandIcon={
+            <div className="bg-gray-200 rounded-full p-1">
+              <ExpandMoreIcon />
+            </div>
+          }
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+          sx={{
+            borderBottom: "1px solid #E5E7EB",
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <span className="hover:text-primary duration-300 flex items-center gap-3">
+              <RedeemIcon className="text-gray-500" />
+              <span className="font-medium">Redeem Reward Points</span>
+            </span>
+          </div>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div className="text-sm text-gray-500 py-5">
+            <p className="text-base">
+              You currently have <span className="font-medium">384</span> Reward
+              Points to spend.
+            </p>
+            <div className="mt-5 flex items-baseline gap-2 select-none">
+              <input type="checkbox" name="useReward" id="useReward" />
+              <label className="cursor-pointer" htmlFor="useReward">
+                Use my Reward Points to pay for this order.
+              </label>
+            </div>
           </div>
         </AccordionDetails>
       </Accordion>
