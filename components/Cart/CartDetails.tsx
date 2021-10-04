@@ -8,7 +8,13 @@ import MiniCartItemComponent from "../MiniCartItemComponent";
 import cartItems from "../../data/cartData";
 import keyGen from "../../utils/genKey";
 
-const CartDetails: FC = () => {
+const CartDetails: FC<{
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ setActiveStep }) => {
+  const goNextStep = () => {
+    setActiveStep((activeStep) => activeStep + 1);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row flex-wrap">
       <div className="lg:w-8/12 text-gray-600 ">
@@ -178,7 +184,7 @@ const CartDetails: FC = () => {
         <button className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md">
           Back to Cart
         </button>
-        <button className="flex-1 primary-btn lg:py-3">
+        <button className="flex-1 primary-btn lg:py-3" onClick={goNextStep}>
           Proceed to Sipping
         </button>
       </div>

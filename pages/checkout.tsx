@@ -41,7 +41,7 @@ const Checkout: NextPage = () => {
       </div>
 
       <div className="px-3 xl:px-container xxl:px-containerXXL mb-16">
-        <Content />
+        <Content setActiveStep={setActiveStep} />
       </div>
     </Layout>
   );
