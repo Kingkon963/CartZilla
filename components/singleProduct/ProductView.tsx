@@ -16,6 +16,7 @@ import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CloseIcon from "@mui/icons-material/Close";
+import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Drift from "drift-zoom";
 import DiplsayFullScreenVideo from "./DiplsayFullScreenVideo";
@@ -180,7 +181,7 @@ const ProductView: React.FC<Props> = ({ asModal, setOpenQuickView }) => {
   };
 
   return (
-    <div>
+    <div className="relative">
       {asModal && (
         <div className="w-full flex justify-between items-center border-b lg:px-10 lg:py-5 rounded-t-lg bg-white">
           <h1
@@ -194,11 +195,17 @@ const ProductView: React.FC<Props> = ({ asModal, setOpenQuickView }) => {
           </button>
         </div>
       )}
+      <div className="bg-green-400 absolute -right-3 top-1/4 transform -translate-y-1/4 text-white rounded-l-md p-1 w-40 flex-center text-sm">
+        <CheckOutlinedIcon className="z-10" />
+        <span className="z-10">Product available</span>
+        <div className="w-3 h-3 bg-green-600 absolute top-full right-0 rounded-br-full border-green-500 z-0"></div>
+      </div>
       <div
         className={`flex flex-col lg:flex-row lg:flex-wrap gap-10 p-5 lg:p-10 bg-white ${
           asModal ? "rounded-b-lg outline-none border-0" : ""
         }`}
       >
+        {/* thumbnails */}
         <div className="flex lg:flex-col flex-wrap gap-2 order-2 lg:order-1">
           {ProductData.thumbs.map((th, _indx) => {
             let isSelected = false;
@@ -231,7 +238,7 @@ const ProductView: React.FC<Props> = ({ asModal, setOpenQuickView }) => {
             }
           })}
         </div>
-
+        {/* Product Image */}
         <div className="lg:w-6/12 relative order-1 lg:order-2 cursor-move">
           {selectedVideo.length > 0 && (
             <DiplsayFullScreenVideo
@@ -253,7 +260,7 @@ const ProductView: React.FC<Props> = ({ asModal, setOpenQuickView }) => {
           </div>
           <div className="top-0 left-0" ref={zoomedImgRef}></div>
         </div>
-
+        {/* Right Panel */}
         <div className=" flex-1 flex flex-col gap-10 order-3">
           <div className="flex items-center gap-2">
             <Rating defaultValue={4} size="small" readOnly />
