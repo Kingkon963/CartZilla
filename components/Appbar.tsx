@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SearchBox from "./SearchBox";
 import MiniCart from "./MiniCart";
+import { useRouter } from "next/dist/client/router";
 
 const personIcon = (
   <svg
@@ -34,9 +35,14 @@ const menuIcon = (
 const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
   setNavOpen,
 }) => {
+  const router = useRouter();
+  const goHome = () => router.push("/");
   return (
     <div className="xl:px-container xxl:px-containerXXL shadow-2xl px-2 py-4 flex gap-0 xl:gap-3 items-stretch xl:justify-start justify-between xl:shadow-none select-none w-screen text-gray-500">
-      <div className="w-36 self-center hidden xl:block">
+      <div
+        className="w-36 self-center hidden xl:block cursor-pointer"
+        onClick={() => goHome()}
+      >
         <Image
           src="/images/logo-dark.png"
           width="284"
@@ -45,7 +51,10 @@ const Appbar: FC<{ setNavOpen: Dispatch<SetStateAction<boolean>> }> = ({
           layout="responsive"
         />
       </div>
-      <div className="w-20 xl:w-36 self-center xl:hidden ">
+      <div
+        className="w-20 xl:w-36 self-center xl:hidden cursor-pointer"
+        onClick={() => goHome()}
+      >
         <Image
           src="/images/logo-icon.png"
           width="148"

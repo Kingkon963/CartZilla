@@ -65,6 +65,7 @@ const MiniCart: FC = () => {
     <div
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onClick={() => router.push("/cart")}
       className="relative"
     >
       <div
