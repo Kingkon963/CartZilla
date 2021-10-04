@@ -6,36 +6,51 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 
 const cartLabel = (
   <span className="flex-center gap-1">
-    <ShoppingCartOutlinedIcon sx={{ fontSize: "1.2rem" }} />
-    <span>Cart</span>
+    <ShoppingCartOutlinedIcon
+      sx={{ fontSize: "1.2rem" }}
+      className="hidden lg:block"
+    />
+    <span className="text-sm lg:text-base">Cart</span>
   </span>
 );
 
 const detailsLabel = (
   <span className="flex-center gap-1">
-    <AccountCircleOutlinedIcon sx={{ fontSize: "1.2rem" }} />
-    <span>Details</span>
+    <AccountCircleOutlinedIcon
+      sx={{ fontSize: "1.2rem" }}
+      className="hidden lg:block"
+    />
+    <span className="text-sm lg:text-base">Details</span>
   </span>
 );
 
 const shippingLabel = (
   <span className="flex-center gap-1">
-    <LocalShippingOutlinedIcon sx={{ fontSize: "1.2rem" }} />
-    <span>Shipping</span>
+    <LocalShippingOutlinedIcon
+      sx={{ fontSize: "1.2rem" }}
+      className="hidden lg:block"
+    />
+    <span className="text-sm lg:text-base">Shipping</span>
   </span>
 );
 
 const paymentLabel = (
   <span className="flex-center gap-1">
-    <PaymentsOutlinedIcon sx={{ fontSize: "1.2rem" }} />
-    <span>Payment</span>
+    <PaymentsOutlinedIcon
+      sx={{ fontSize: "1.2rem" }}
+      className="hidden lg:block"
+    />
+    <span className="text-sm lg:text-base">Payment</span>
   </span>
 );
 
 const reviewLabel = (
   <span className="flex-center gap-1">
-    <VisibilityOutlinedIcon sx={{ fontSize: "1.2rem" }} />
-    <span>Review</span>
+    <VisibilityOutlinedIcon
+      sx={{ fontSize: "1.2rem" }}
+      className="hidden lg:block"
+    />
+    <span className="text-sm lg:text-base">Review</span>
   </span>
 );
 

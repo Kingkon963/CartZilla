@@ -7,7 +7,7 @@ import Price from "../../components/Price";
 
 const CartDetails: FC = () => {
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex flex-col lg:flex-row flex-wrap">
       <div className="lg:w-8/12 text-gray-600 ">
         <div className="bg-lightBlue my-10 flex items-center gap-5 lg:gap-0 flex-col lg:flex-row rounded-md p-5">
           <div className="flex w-full">
@@ -30,8 +30,7 @@ const CartDetails: FC = () => {
               <p className="text-sm text-blue-700">s.gardner@example.com</p>
             </div>
           </div>
-
-          <button className="flex-center gap-2 bg-white shadow-lg hover:shadow-none duration-300 rounded-md text-gray-500 font-thin px-4 py-2 lg:ml-auto">
+          <button className="flex-center gap-2 bg-white shadow-lg hover:shadow-none duration-300 rounded-md text-gray-500 font-thin px-4 py-2 w-40 lg:ml-auto">
             <EditIcon sx={{ fontSize: "1rem" }} />
             <span>Edit profile</span>
           </button>
@@ -154,11 +153,13 @@ const CartDetails: FC = () => {
           </button>
         </div>
       </div>
-      <div className="w-full flex gap-7 mt-10">
+      <div className="lg:w-8/12 flex gap-7 mt-10">
         <button className="flex-1 bg-gray-200 hover:bg-gray-300 duration-300 rounded-md">
           Back to Cart
         </button>
-        <button className="flex-1 primary-btn py-3">Proceed to Sipping</button>
+        <button className="flex-1 primary-btn lg:py-3">
+          Proceed to Sipping
+        </button>
       </div>
     </div>
   );

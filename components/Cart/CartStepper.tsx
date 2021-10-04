@@ -7,10 +7,17 @@ interface StepProps {
   label: JSX.Element;
   stepNo: number;
   completed?: boolean;
+  active?: boolean;
   handleClick?: () => void;
 }
 
-const Step: FC<StepProps> = ({ label, stepNo, completed, handleClick }) => {
+const Step: FC<StepProps> = ({
+  label,
+  stepNo,
+  completed,
+  active,
+  handleClick,
+}) => {
   return (
     <div
       className="relative flex-1 select-none cursor-pointer"
@@ -28,7 +35,11 @@ const Step: FC<StepProps> = ({ label, stepNo, completed, handleClick }) => {
       >
         {stepNo}
       </span>
-      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-5 ">
+      <div
+        className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-5 ${
+          active ? "text-white" : "text-gray-400"
+        }`}
+      >
         {label}
       </div>
     </div>
@@ -65,6 +76,7 @@ const CartStepper: FC<CartStepperProps> = ({
             key={keyGen()}
             completed={_indx <= activeStep}
             handleClick={() => handleStepClick(_indx)}
+            active={_indx === activeStep}
           />
         );
       })}
