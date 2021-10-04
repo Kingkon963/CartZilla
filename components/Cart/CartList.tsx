@@ -1,11 +1,16 @@
 import * as React from "react";
 import Image from "next/dist/client/image";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import EditIcon from "@mui/icons-material/Edit";
 
 import keyGen from "../../utils/genKey";
 import Price from "../Price";
 
-const CartList: React.FC = () => {
+interface CartListProps {
+  final?: boolean;
+}
+
+const CartList: React.FC<CartListProps> = ({ final }) => {
   const listData = [
     {
       title: "Women Colorblock Sneakers",
@@ -76,17 +81,34 @@ const CartList: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col items-start gap-2">
-                <h1 className="font-medium">Quantity</h1>
-                <input
-                  className="border focus:border-primary focus:shadow-md duration-300 rounded-md w-32 outline-none px-3 py-2"
-                  type="number"
-                  name="quantity"
-                  defaultValue={1}
-                />
-                <button className="text-primary text-sm  flex items-center">
-                  <CancelOutlinedIcon sx={{ fontSize: "1rem" }} />
-                  <span>Remove</span>
-                </button>
+                <h1
+                  className={`font-medium text-gray-500 ${
+                    final ? "text-sm" : ""
+                  }`}
+                >
+                  Quantity {final && <span>: 1</span>}
+                </h1>
+
+                {!final && (
+                  <>
+                    <input
+                      className="border focus:border-primary focus:shadow-md duration-300 rounded-md w-32 outline-none px-3 py-2"
+                      type="number"
+                      name="quantity"
+                      defaultValue={1}
+                    />
+                    <button className="text-primary text-sm  flex items-center">
+                      <CancelOutlinedIcon sx={{ fontSize: "1rem" }} />
+                      <span>Remove</span>
+                    </button>
+                  </>
+                )}
+                {final && (
+                  <button className="flex-center text-sm lg:ml-auto text-primary">
+                    <EditIcon sx={{ fontSize: "1rem" }} />
+                    Edit
+                  </button>
+                )}
               </div>
             </div>
           </div>
